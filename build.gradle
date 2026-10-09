@@ -18,7 +18,6 @@ apply from: 'gradle/base/javaDocs.gradle'
 apply from: 'gradle/base/import-properties.gradle'
 apply from: 'gradle/base/log-changes.gradle'
 
-version = modVersion
 group = "com.dynamero.jilibs"
 
 apply from: 'gradle/base/git-versioning.gradle'
