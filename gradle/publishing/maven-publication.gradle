@@ -26,6 +26,10 @@ publishing {
 
     publications {
         mavenJava(MavenPublication) {
+
+            // Explicitly set the Maven artifactId
+            artifactId = "${project.name}-fabric"
+
             artifact(jar) {
                 builtBy(jar)
             }
@@ -34,39 +38,8 @@ publishing {
                 builtBy sourcesJar
             }
 
-            //from components.java
-            // If java.withJavadocJar() is enabled, adding this line creates a duplicate artifact collision:
-            //artifact tasks.named('javadocJar')
-
             pom {
                 addPomMetadataInformation(rootProject, pom)
-            }
-
-            List<Map<String, String>> dependencies = []
-
-            subprojects.each {
-
-                if (metaProjects.contains(it.name)) {
-                    return
-                }
-
-                dependencies.add([
-                        'groupId': it.group,
-                        'artifactId': "${it.name}-fabric",
-                        'version': getSubprojectVersion(it),
-                        'scope': 'compile'
-                ])
-            }
-
-            pom.withXml {
-                def depsNode = asNode().appendNode("dependencies")
-                for (dep in dependencies) {
-                    def depNode = depsNode.appendNode("dependency")
-                    depNode.appendNode("groupId", dep['groupId'])
-                    depNode.appendNode("artifactId", dep['artifactId'])
-                    depNode.appendNode("version", dep['version'])
-                    depNode.appendNode("scope", dep['scope'])
-                }
             }
         }
     }
