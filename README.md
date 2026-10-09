@@ -4,8 +4,11 @@
 
 **The Fabric mod loader specific implementation of the JiLibs ecosystem.**
 
-[![Maven Metadata](https://img.shields.io/maven-metadata/v?metadataUrl=https%3A%2F%2Frepo.repsy.io%2Fmvn%2Fthementor%2Fjilibs%2Fcom%2Fdynamero%2Fjilibs-fabric%2Fmaven-metadata.xml&label=repsy&color=blue&style=for-the-badge)](https://repo.repsy.io/mvn/thementor/jilibs)
-[![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white)](https://www.oracle.com/java/)
+![Maven metadata URL](https://img.shields.io/maven-metadata/v?metadataUrl=https%3A%2F%2Frepo.repsy.io%2Fmvn%2Fthementor%2Fjilibs%2Fcom%2Fdynamero%2Fjilibs%2Fjilibs-fabric%2Fmaven-metadata.xml&style=for-the-badge&label=Latest%20Version&labelColor=Black&color=Lime)
+[![MC Version](https://img.shields.io/badge/dynamic/regex?url=https%3A%2F%2Frepo.repsy.io%2Fmvn%2Fthementor%2Fjilibs%2Fcom%2Fdynamero%2Fjilibs%2Fjilibs-fabric%2Fmaven-metadata.xml&search=%3Crelease%3E(%5Cd%2B%5C.%5Cd%2B)&replace=%241&label=MC%20Version&color=brightgreen&style=for-the-badge)](https://repo.repsy.io/mvn/thementor/jilibs)
+![Static Badge](https://img.shields.io/badge/ACTIVE-8A2BE2?style=for-the-badge)
+
+[![Java](https://img.shields.io/badge/java-%239D8000.svg?style=for-the-badge&logo=openjdk&logoColor=white)](https://www.oracle.com/java/)
 [![GitHub license](https://img.shields.io/badge/license-LGPL--3.0-blue.svg?style=for-the-badge)](https://github.com/drkhodakarami/JiLibs-Fabric/blob/HEAD/LICENSE)
 [![GitHub issues](https://img.shields.io/github/issues/drkhodakarami/JiLibs-Fabric?style=for-the-badge&color=orange)](https://github.com/drkhodakarami/JiLibs-Fabric/issues)
 
@@ -42,15 +45,10 @@ Add the JiLibs Maven endpoint to your `repositories` block:
 ```groovy
 repositories {
     mavenCentral()
-    // Fabric repository
-    maven {
-        name = "Fabric"
-        url = "[https://maven.fabricmc.net/](https://maven.fabricmc.net/)"
-    }
     // JiLibs Repsy Repository
     maven {
         name = "JiLibs Repsy"
-        url = "[https://repo.repsy.io/mvn/thementor/jilibs](https://repo.repsy.io/mvn/thementor/jilibs)"
+        url = 'https://repo.repsy.io/mvn/thementor/jilibs'
     }
 }
 ```
@@ -64,10 +62,10 @@ dependencies {
 def jilibs_version = "1.0.0"
 
     // Add as a mod dependency
-    implementation "com.dynamero:jilibs-fabric:${jilibs_version}"
+    implementation "com.dynamero.jilibs:jilibs-fabric:${jilibs_version}"
 
     // Bundle directly into your mod jar
-    include "com.dynamero:jilibs-fabric:${jilibs_version}"
+    include "com.dynamero.jilibs:jilibs-fabric:${jilibs_version}"
 }
 ```
 
