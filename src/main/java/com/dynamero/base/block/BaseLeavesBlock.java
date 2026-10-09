@@ -58,12 +58,15 @@ import net.minecraft.world.phys.shapes.VoxelShape;
  * Custom base leaves block supporting waterlogging, distance decay from logs,
  * persistent player placement, and tinted dripping leaf particles.
  */
-@SuppressWarnings("unused")
-@Developer("TheMentor")
-@CreatedAt("2026-01-12")
+@Developer("TurtyWurty")
+@CreatedAt("2026-08-10")
+@ModifiedAt("2026-08-10")
+@ModifiedBy("TheMentor")
+@Website("https://dynamero.com")
 @Repository("https://github.com/drkhodakarami/")
 @Discord("https://discord.gg/pmM4emCbuH")
 @Youtube("https://www.youtube.com/@TheMentorCodeLab")
+@Modrinth("https://modrinth.com/user/jiraiyah")
 public class BaseLeavesBlock extends Block implements SimpleWaterloggedBlock
 {
 	/**

@@ -31,8 +31,8 @@ import net.minecraft.world.item.BoatItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 
-import com.dynamero.register.EntityRegisterar;
-import com.dynamero.register.ItemRegisterar;
+import com.dynamero.registerars.EntityRegisterar;
+import com.dynamero.registerars.ItemRegisterar;
 import com.dynamero.shared.annotations.*;
 import com.dynamero.shared.utils.BaseHelper;
 
@@ -41,11 +41,14 @@ import com.dynamero.shared.utils.BaseHelper;
  */
 @SuppressWarnings("unused")
 @Developer("TurtyWurty")
-@ModifiedBy("The Mentor")
-@CreatedAt("2025-04-15")
-@Repository("https://github.com/DaRealTurtyWurty/Industria")
-@Discord("https://discord.turtywurty.dev/")
-@Youtube("https://www.youtube.com/@TurtyWurty")
+@CreatedAt("2026-08-10")
+@ModifiedAt("2026-08-10")
+@ModifiedBy("TheMentor")
+@Website("https://dynamero.com")
+@Repository("https://github.com/drkhodakarami/")
+@Discord("https://discord.gg/pmM4emCbuH")
+@Youtube("https://www.youtube.com/@TheMentorCodeLab")
+@Modrinth("https://modrinth.com/user/jiraiyah")
 public class WoodsetBoats
 {
     /**

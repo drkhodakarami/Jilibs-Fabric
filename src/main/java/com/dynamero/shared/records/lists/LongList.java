@@ -28,10 +28,14 @@ import com.dynamero.shared.annotations.*;
 import com.dynamero.shared.records.LongPayload;
 
 @Developer("TheMentor")
-@CreatedAt("2026-01-12")
+@CreatedAt("2026-08-10")
+@ModifiedAt("2026-08-10")
+@ModifiedBy("TheMentor")
+@Website("https://dynamero.com")
 @Repository("https://github.com/drkhodakarami/")
 @Discord("https://discord.gg/pmM4emCbuH")
 @Youtube("https://www.youtube.com/@TheMentorCodeLab")
+@Modrinth("https://modrinth.com/user/jiraiyah")
 public record LongList(List<LongPayload> values)
 {
     public static Codec<LongList> CODEC = LongPayload.LIST_CODEC.xmap(LongList::new, LongList::values);

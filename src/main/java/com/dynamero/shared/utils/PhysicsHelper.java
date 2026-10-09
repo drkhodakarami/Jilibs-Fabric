@@ -18,6 +18,7 @@ package com.dynamero.shared.utils;
 
 import java.util.Optional;
 
+import com.dynamero.shared.annotations.*;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.ClipContext;
@@ -27,19 +28,19 @@ import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 
-import com.dynamero.shared.annotations.CreatedAt;
-import com.dynamero.shared.annotations.Developer;
-import com.dynamero.shared.annotations.Repository;
-import com.dynamero.shared.annotations.Youtube;
-
 /**
  * Provides utility methods for physics-related operations in Minecraft.
  */
 @SuppressWarnings("unused")
 @Developer("Direwolf20")
-@CreatedAt("2025-04-18")
-@Repository("https://github.com/Direwolf20-MC/JustDireThings")
-@Youtube("https://www.youtube.com/@direwolf20")
+@CreatedAt("2026-08-10")
+@ModifiedAt("2026-08-10")
+@ModifiedBy("TheMentor")
+@Website("https://dynamero.com")
+@Repository("https://github.com/drkhodakarami/")
+@Discord("https://discord.gg/pmM4emCbuH")
+@Youtube("https://www.youtube.com/@TheMentorCodeLab")
+@Modrinth("https://modrinth.com/user/jiraiyah")
 public class PhysicsHelper
 {
     /**

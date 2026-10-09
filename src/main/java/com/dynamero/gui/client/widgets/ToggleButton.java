@@ -1,0 +1,346 @@
+/*
+ * Copyright (c) 2025 Alireza Khodakarami
+ *
+ * Licensed under the MIT, (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     https://opensource.org/license/mit
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package com.dynamero.gui.client.widgets;
+
+import java.util.function.BiConsumer;
+
+import com.dynamero.gui.client.constants.ToggleButtonTextures;
+import com.dynamero.gui.client.records.TextureData;
+import com.dynamero.gui.client.utils.MenuHelper;
+import com.dynamero.shared.annotations.*;
+import com.dynamero.shared.utils.BaseHelper;
+import org.jetbrains.annotations.NotNull;
+
+import net.minecraft.client.gui.GuiGraphicsExtractor;
+import net.minecraft.client.gui.components.Button;
+import net.minecraft.client.input.InputWithModifiers;
+import net.minecraft.network.chat.Component;
+import net.minecraft.resources.Identifier;
+import net.minecraft.util.ARGB;
+
+@SuppressWarnings("unused")
+@Developer("TheMentor")
+@CreatedAt("2026-08-10")
+@ModifiedAt("2026-08-10")
+@ModifiedBy("TheMentor")
+@Website("https://dynamero.com")
+@Repository("https://github.com/drkhodakarami/")
+@Discord("https://discord.gg/pmM4emCbuH")
+@Youtube("https://www.youtube.com/@TheMentorCodeLab")
+@Modrinth("https://modrinth.com/user/jiraiyah")
+public class ToggleButton extends Button
+{
+	private final BiConsumer<ToggleButton, Boolean> onPress;
+	private final Identifier onState;
+	private final Identifier offState;
+	private final Identifier onSelected;
+	private final Identifier offSelected;
+	private final int onStateU, onStateV, offStateU, offStateV,
+			onSelectedU, onSelectedV, offSelectedU, offSelectedV;
+
+	private boolean toggled;
+
+	protected ToggleButton(int x, int y, int width, int height, boolean defaultToggled,
+						Identifier onState, Identifier offState, Identifier onSelected, Identifier offSelected,
+						int onStateU, int onStateV,
+						int offStateU, int offStateV,
+						int onSelectedU, int onSelectedV,
+						int offSelectedU, int offSelectedV,
+						BiConsumer<ToggleButton, Boolean> onPress, CreateNarration narrationSupplier)
+	{
+		super(x, y, width, height, Component.empty(), $ -> {}, narrationSupplier);
+
+		this.onPress = onPress;
+		this.toggled = defaultToggled;
+		this.onState = onState;
+		this.offState = offState;
+		this.onSelected = onSelected;
+		this.offSelected = offSelected;
+		this.onStateU = onStateU;
+		this.onStateV = onStateV;
+		this.offStateU = offStateU;
+		this.offStateV = offStateV;
+
+		this.onSelectedU = onSelectedU;
+		this.onSelectedV = onSelectedV;
+		this.offSelectedU = offSelectedU;
+		this.offSelectedV = offSelectedV;
+	}
+
+	@Override
+	public void onPress(@NotNull InputWithModifiers input)
+	{
+		toggle();
+		this.onPress.accept(this, this.toggled);
+	}
+
+	public void toggle()
+	{
+		this.toggled = !this.toggled;
+	}
+
+	public void setToggled(boolean flag)
+	{
+		this.toggled = flag;
+	}
+
+	public boolean getToggled()
+	{
+		return this.toggled;
+	}
+
+	public Identifier getOnState()
+	{
+		return this.onState;
+	}
+
+	public Identifier getOffState()
+	{
+		return this.offState;
+	}
+
+	public Identifier getOnStateSelected()
+	{
+		return this.onSelected;
+	}
+
+	public Identifier getOffStateSelected()
+	{
+		return this.offSelected;
+	}
+
+	@Override
+	protected void extractContents(@NotNull GuiGraphicsExtractor context, int mouseX, int mouseY, float deltaTicks)
+	{
+		if(BaseHelper.validateIdentifier(this.onSelected) &&
+           BaseHelper.validateIdentifier(this.onState) &&
+           BaseHelper.validateIdentifier(this.offSelected) &&
+           BaseHelper.validateIdentifier(this.offState))
+			MenuHelper.drawTexture(
+					context,
+					this.toggled
+					? (isHovered() ? this.onSelected : this.onState)
+					: (isHovered() ? this.offSelected : this.offState),
+					getX(),
+					getY(),
+					this.toggled
+					? (isHovered() ? this.onSelectedU : this.onStateU)
+					: (isHovered() ? this.offSelectedU : this.offStateU),
+					this.toggled
+					? (isHovered() ? this.onSelectedV : this.onStateV)
+					: (isHovered() ? this.offSelectedV : this.offStateV),
+					getWidth(),
+					getHeight(),
+					getWidth(),
+					getHeight(),
+					ARGB.white(this.alpha));
+	}
+
+	public static class Builder
+	{
+		private int x, y, width, height;
+		private boolean defaultToggled;
+		private  Identifier onState;
+		private  Identifier offState;
+		private  Identifier onSelected;
+		private  Identifier offSelected;
+		private int onStateU, onStateV, offStateU, offStateV,
+				onSelectedU, onSelectedV, offSelectedU, offSelectedV;
+
+		private BiConsumer<ToggleButton, Boolean> onPress = (button, flag) -> {};
+		private CreateNarration narrationSupplier = textSupplier -> Component.empty();
+
+		public Builder()
+		{}
+
+		public Builder(int x, int y)
+		{
+			this.x = x;
+			this.y = y;
+		}
+
+		public Builder(int x, int y, int width, int height)
+		{
+			this.x = x;
+			this.y = y;
+			this.width = width;
+			this.height = height;
+		}
+
+		public Builder addDefaultSize()
+		{
+			this.width = 32 ;
+			this.height = 16;
+			return this;
+		}
+
+		public Builder width(int width)
+		{
+			this.width = width;
+			return this;
+		}
+
+		public Builder height(int height)
+		{
+			this.height = height;
+			return this;
+		}
+
+		public Builder onStateUV(int u, int v)
+		{
+			this.onStateU = u;
+			this.onStateV = v;
+			return this;
+		}
+
+		public Builder offStateUV(int u, int v)
+		{
+			this.onStateU = u;
+			this.onStateV = v;
+			return this;
+		}
+
+		public Builder onSelectedUV(int u, int v)
+		{
+			this.onSelectedU = u;
+			this.onSelectedV = v;
+			return this;
+		}
+
+		public Builder offSelectedUV(int u, int v)
+		{
+			this.onSelectedU = u;
+			this.onSelectedV = v;
+			return this;
+		}
+
+		public Builder onPress(BiConsumer<ToggleButton, Boolean> onPress)
+		{
+			this.onPress = onPress;
+			return this;
+		}
+
+		public Builder narrationSupplier(CreateNarration narrationSupplier)
+		{
+			this.narrationSupplier = narrationSupplier;
+			return this;
+		}
+
+		public Builder toggleByDefault()
+		{
+			this.defaultToggled = true;
+			return this;
+		}
+
+		public Builder toggledByDefault(boolean flag)
+		{
+			this.defaultToggled = flag;
+			return this;
+		}
+
+		public Builder setOnState(Identifier id)
+		{
+			this.onState = id;
+			return this;
+		}
+
+		public Builder setOffState(Identifier id)
+		{
+			this.offState = id;
+			return this;
+		}
+
+		public Builder setOnSelected(Identifier id)
+		{
+			this.onSelected = id;
+			return this;
+		}
+
+		public Builder setOffSelected(Identifier id)
+		{
+			this.offSelected = id;
+			return this;
+		}
+
+		public Builder setOnState(TextureData texture)
+		{
+			return this.width(texture.width())
+					.height(texture.height())
+					.onStateUV(texture.u(), texture.v())
+					.setOnState(texture.id());
+		}
+
+		public Builder setOffState(TextureData texture)
+		{
+			return this.width(texture.width())
+					.height(texture.height())
+					.offStateUV(texture.u(), texture.v())
+					.setOffState(texture.id());
+		}
+
+		public Builder setOnSelected(TextureData texture)
+		{
+			return this.width(texture.width())
+					.height(texture.height())
+					.onSelectedUV(texture.u(), texture.v())
+					.setOnSelected(texture.id());
+		}
+
+		public Builder setOffSelected(TextureData texture)
+		{
+			return this.width(texture.width())
+					.height(texture.height())
+					.offSelectedUV(texture.u(), texture.v())
+					.setOffSelected(texture.id());
+		}
+
+		public Builder setDefaultTextures()
+		{
+			return this.setOnState(ToggleButtonTextures.Normal.On.NORMAL.id())
+					.setOffState(ToggleButtonTextures.Normal.Off.NORMAL.id())
+					.setOnSelected(ToggleButtonTextures.Normal.On.HOVERED.id())
+					.setOffSelected(ToggleButtonTextures.Normal.Off.HOVERED.id());
+		}
+
+		public Builder setColoredTextures()
+		{
+			return this.setOnState(ToggleButtonTextures.Colored.On.NORMAL.id())
+					.setOffState(ToggleButtonTextures.Colored.Off.NORMAL.id())
+					.setOnSelected(ToggleButtonTextures.Colored.On.HOVERED.id())
+					.setOffSelected(ToggleButtonTextures.Colored.Off.HOVERED.id());
+		}
+
+		public Builder setSmallTextures()
+		{
+			return this.setOnState(ToggleButtonTextures.Small.On.NORMAL.id())
+					.setOffState(ToggleButtonTextures.Small.Off.NORMAL.id())
+					.setOnSelected(ToggleButtonTextures.Small.On.HOVERED.id())
+					.setOffSelected(ToggleButtonTextures.Small.Off.HOVERED.id());
+		}
+
+		public ToggleButton build()
+		{
+			return new ToggleButton(x, y, width, height, defaultToggled,
+									onState, offState, onSelected, offSelected,
+									onStateU, onStateV,
+									offStateU, offStateV,
+									onSelectedU, onSelectedV,
+									offSelectedU, offSelectedV,
+									onPress, narrationSupplier);
+		}
+	}
+}

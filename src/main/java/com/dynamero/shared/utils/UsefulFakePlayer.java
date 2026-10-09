@@ -16,6 +16,7 @@
 
 package com.dynamero.shared.utils;
 
+import com.dynamero.shared.annotations.*;
 import com.mojang.authlib.GameProfile;
 import net.fabricmc.fabric.api.entity.FakePlayer;
 import org.jetbrains.annotations.NotNull;
@@ -27,19 +28,19 @@ import net.minecraft.world.item.ItemCooldowns;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.portal.TeleportTransition;
 
-import com.dynamero.shared.annotations.CreatedAt;
-import com.dynamero.shared.annotations.Developer;
-import com.dynamero.shared.annotations.Repository;
-import com.dynamero.shared.annotations.Youtube;
-
 /**
  * Extends the Fabric API's FakePlayer to provide additional useful methods and behavior.
  */
 @SuppressWarnings("unused")
 @Developer("Direwolf20")
-@CreatedAt("2025-04-18")
-@Repository("https://github.com/Direwolf20-MC/JustDireThings")
-@Youtube("https://www.youtube.com/@direwolf20")
+@CreatedAt("2026-08-10")
+@ModifiedAt("2026-08-10")
+@ModifiedBy("TheMentor")
+@Website("https://dynamero.com")
+@Repository("https://github.com/drkhodakarami/")
+@Discord("https://discord.gg/pmM4emCbuH")
+@Youtube("https://www.youtube.com/@TheMentorCodeLab")
+@Modrinth("https://modrinth.com/user/jiraiyah")
 public class UsefulFakePlayer extends FakePlayer
 {
     /**

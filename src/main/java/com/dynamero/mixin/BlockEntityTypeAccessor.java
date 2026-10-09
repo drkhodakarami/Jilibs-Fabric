@@ -30,11 +30,14 @@ import com.dynamero.shared.annotations.*;
  * Mixin accessor for {@link BlockEntityType} exposing the valid blocks set for runtime mutation.
  */
 @Developer("TurtyWurty")
+@CreatedAt("2026-08-10")
+@ModifiedAt("2026-08-10")
 @ModifiedBy("TheMentor")
-@CreatedAt("2025-04-18")
-@Repository("https://github.com/DaRealTurtyWurty/Industria")
-@Discord("https://discord.turtywurty.dev/")
-@Youtube("https://www.youtube.com/@TurtyWurty")
+@Website("https://dynamero.com")
+@Repository("https://github.com/drkhodakarami/")
+@Discord("https://discord.gg/pmM4emCbuH")
+@Youtube("https://www.youtube.com/@TheMentorCodeLab")
+@Modrinth("https://modrinth.com/user/jiraiyah")
 @Mixin(BlockEntityType.class)
 public interface BlockEntityTypeAccessor
 {

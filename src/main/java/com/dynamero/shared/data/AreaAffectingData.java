@@ -18,13 +18,9 @@ package com.dynamero.shared.data;
 
 import java.util.Objects;
 
+import com.dynamero.shared.annotations.*;
 import net.minecraft.core.Direction;
 import net.minecraft.world.phys.AABB;
-
-import com.dynamero.shared.annotations.CreatedAt;
-import com.dynamero.shared.annotations.Developer;
-import com.dynamero.shared.annotations.Repository;
-import com.dynamero.shared.annotations.Youtube;
 
 /**
  * A class representing data for area-affecting abilities or mechanics.
@@ -34,9 +30,14 @@ import com.dynamero.shared.annotations.Youtube;
  */
 @SuppressWarnings("unused")
 @Developer("Direwolf20")
-@CreatedAt("2025-04-18")
-@Repository("https://github.com/Direwolf20-MC/JustDireThings")
-@Youtube("https://www.youtube.com/@direwolf20")
+@CreatedAt("2026-08-10")
+@ModifiedAt("2026-08-10")
+@ModifiedBy("TheMentor")
+@Website("https://dynamero.com")
+@Repository("https://github.com/drkhodakarami/")
+@Discord("https://discord.gg/pmM4emCbuH")
+@Youtube("https://www.youtube.com/@TheMentorCodeLab")
+@Modrinth("https://modrinth.com/user/jiraiyah")
 public class AreaAffectingData
 {
     /**

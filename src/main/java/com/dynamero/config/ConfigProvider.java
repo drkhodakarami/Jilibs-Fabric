@@ -19,20 +19,22 @@ package com.dynamero.config;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.dynamero.shared.annotations.*;
 import com.mojang.datafixers.util.Pair;
-
-import com.dynamero.shared.annotations.CreatedAt;
-import com.dynamero.shared.annotations.Developer;
-import com.dynamero.shared.annotations.ModifiedBy;
 
 /**
  * Provides a provider for managing configuration data.
  */
-@Developer("Kaupenjoe")
-@ModifiedBy("The Mentor")
-@CreatedAt("2025-04-18")
-
 @SuppressWarnings("unused")
+@Developer("TheMentor")
+@CreatedAt("2026-08-10")
+@ModifiedAt("2026-08-10")
+@ModifiedBy("TheMentor")
+@Website("https://dynamero.com")
+@Repository("https://github.com/drkhodakarami/")
+@Discord("https://discord.gg/pmM4emCbuH")
+@Youtube("https://www.youtube.com/@TheMentorCodeLab")
+@Modrinth("https://modrinth.com/user/jiraiyah")
 public class ConfigProvider implements IConfigProvider
 {
     /**

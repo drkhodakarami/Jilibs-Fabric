@@ -28,10 +28,14 @@ import java.lang.annotation.Target;
  * to indicate when the annotated component was last updated.</p>
  */
 @Developer("TheMentor")
-@CreatedAt("2025-04-18")
+@CreatedAt("2026-08-10")
+@ModifiedAt("2026-08-10")
+@ModifiedBy("TheMentor")
+@Website("https://dynamero.com")
 @Repository("https://github.com/drkhodakarami/")
 @Discord("https://discord.gg/pmM4emCbuH")
 @Youtube("https://www.youtube.com/@TheMentorCodeLab")
+@Modrinth("https://modrinth.com/user/jiraiyah")
 
 @Documented
 @Target(value = {TYPE, METHOD, FIELD, CONSTRUCTOR})

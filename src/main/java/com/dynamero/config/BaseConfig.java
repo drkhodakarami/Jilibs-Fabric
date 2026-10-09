@@ -24,20 +24,24 @@ import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.Scanner;
 
+import com.dynamero.shared.annotations.*;
 import net.fabricmc.loader.api.FabricLoader;
 
 import com.dynamero.logger.Logger;
-import com.dynamero.shared.annotations.CreatedAt;
-import com.dynamero.shared.annotations.Developer;
-import com.dynamero.shared.annotations.Repository;
 
 /**
  * Provides a base configuration management system for Minecraft mods using Fabric API.
  */
 @SuppressWarnings("unused")
 @Developer("Magistermaks")
-@CreatedAt("2025-04-18")
+@CreatedAt("2026-08-10")
+@ModifiedAt("2026-08-10")
+@ModifiedBy("TheMentor")
+@Website("https://dynamero.com")
 @Repository("https://github.com/magistermaks/fabric-simplelibs/blob/master/simple-config/SimpleConfig.java")
+@Discord("https://discord.gg/pmM4emCbuH")
+@Youtube("https://www.youtube.com/@TheMentorCodeLab")
+@Modrinth("https://modrinth.com/user/jiraiyah")
 
 public class BaseConfig
 {

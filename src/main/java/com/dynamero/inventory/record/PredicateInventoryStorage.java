@@ -41,15 +41,17 @@ import com.dynamero.shared.annotations.*;
  * @param canInsert  supplier determining whether insertion is currently permitted
  * @param canExtract supplier determining whether extraction is currently permitted
  */
-@Developer("TurtyWurty")
-@ModifiedBy("The Mentor")
-@CreatedAt("2025-04-18")
-@Repository("https://github.com/DaRealTurtyWurty/Industria")
-@Discord("https://discord.turtywurty.dev/")
-@Youtube("https://www.youtube.com/@TurtyWurty")
-
 @Experimental
 @SuppressWarnings("NonExtendableApiUsage")
+@Developer("TurtyWurty")
+@CreatedAt("2026-08-10")
+@ModifiedAt("2026-08-10")
+@ModifiedBy("TheMentor")
+@Website("https://dynamero.com")
+@Repository("https://github.com/drkhodakarami/")
+@Discord("https://discord.gg/pmM4emCbuH")
+@Youtube("https://www.youtube.com/@TheMentorCodeLab")
+@Modrinth("https://modrinth.com/user/jiraiyah")
 public record PredicateInventoryStorage(ContainerStorage storage, Supplier<Boolean> canInsert, Supplier<Boolean> canExtract) implements ContainerStorage
 {
     /**

@@ -65,7 +65,7 @@ import org.jspecify.annotations.NonNull;
  * custom state properties, GUI interaction, and inventory persistence.
  */
 @SuppressWarnings("unused")
-@Developer("TheMentor")
+@Developer("TurtyWurty")
 @CreatedAt("2026-08-10")
 @ModifiedAt("2026-08-10")
 @ModifiedBy("TheMentor")

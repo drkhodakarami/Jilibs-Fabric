@@ -16,6 +16,7 @@
 
 package com.dynamero;
 
+import com.dynamero.shared.annotations.*;
 import com.mojang.serialization.Codec;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.event.registry.FabricRegistryBuilder;
@@ -42,11 +43,20 @@ import com.dynamero.pressure.base.PressureComponent;
 import com.dynamero.pressure.base.interfaces.PressureItem;
 import com.dynamero.pressure.base.interfaces.PressureStorage;
 import com.dynamero.pressure.base.records.PressureComponentList;
-import com.dynamero.shared.network.FluidComponent;
+import com.dynamero.fluid.base.FluidComponent;
 import com.dynamero.shared.records.*;
 import com.dynamero.shared.records.lists.*;
 import com.dynamero.shared.utils.BaseHelper;
 
+@Developer("TheMentor")
+@CreatedAt("2026-08-10")
+@ModifiedAt("2026-08-10")
+@ModifiedBy("TheMentor")
+@Website("https://dynamero.com")
+@Repository("https://github.com/drkhodakarami/")
+@Discord("https://discord.gg/pmM4emCbuH")
+@Youtube("https://www.youtube.com/@TheMentorCodeLab")
+@Modrinth("https://modrinth.com/user/jiraiyah")
 public class Jilibs implements ModInitializer
 {
     public static final String MODID = "jilibs_fabric";

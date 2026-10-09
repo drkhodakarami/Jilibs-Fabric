@@ -57,10 +57,10 @@ import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.block.state.properties.WoodType;
 
 import com.dynamero.mixin.BlockEntityTypeAccessor;
-import com.dynamero.register.BlockItemRegisterar;
-import com.dynamero.register.BlockRegisterar;
-import com.dynamero.register.EntityRegisterar;
-import com.dynamero.register.ItemRegisterar;
+import com.dynamero.registerars.BlockItemRegisterar;
+import com.dynamero.registerars.BlockRegisterar;
+import com.dynamero.registerars.EntityRegisterar;
+import com.dynamero.registerars.ItemRegisterar;
 import com.dynamero.shared.annotations.*;
 import com.dynamero.shared.utils.BaseHelper;
 
@@ -93,12 +93,14 @@ import com.dynamero.shared.utils.BaseHelper;
  */
 @SuppressWarnings("unused")
 @Developer("TurtyWurty")
-@ModifiedBy("The Mentor")
-@CreatedAt("2025-04-15")
-@ModifiedAt("2025-04-19")
-@Repository("https://github.com/DaRealTurtyWurty/Industria")
-@Discord("https://discord.turtywurty.dev/")
-@Youtube("https://www.youtube.com/@TurtyWurty")
+@CreatedAt("2026-08-10")
+@ModifiedAt("2026-08-10")
+@ModifiedBy("TheMentor")
+@Website("https://dynamero.com")
+@Repository("https://github.com/drkhodakarami/")
+@Discord("https://discord.gg/pmM4emCbuH")
+@Youtube("https://www.youtube.com/@TheMentorCodeLab")
+@Modrinth("https://modrinth.com/user/jiraiyah")
 public class WoodSet
 {
     /** The unique name of the wood set. */

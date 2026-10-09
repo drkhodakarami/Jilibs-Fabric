@@ -62,11 +62,14 @@ import com.dynamero.shared.utils.ValueIO;
  */
 @SuppressWarnings("unused")
 @Developer("TurtyWurty")
-@ModifiedBy("The Mentor")
-@CreatedAt("2025-04-18")
-@Repository("https://github.com/DaRealTurtyWurty/Industria")
-@Discord("https://discord.turtywurty.dev/")
-@Youtube("https://www.youtube.com/@TurtyWurty")
+@CreatedAt("2026-08-10")
+@ModifiedAt("2026-08-10")
+@ModifiedBy("TheMentor")
+@Website("https://dynamero.com")
+@Repository("https://github.com/drkhodakarami/")
+@Discord("https://discord.gg/pmM4emCbuH")
+@Youtube("https://www.youtube.com/@TheMentorCodeLab")
+@Modrinth("https://modrinth.com/user/jiraiyah")
 public class InventoryConnector<T extends SimpleContainer> extends StorageConnector<ContainerStorage>
     implements StorageConnectorProvider<InventoryConnector<T>>, StorageProvider<ContainerStorage>
 {

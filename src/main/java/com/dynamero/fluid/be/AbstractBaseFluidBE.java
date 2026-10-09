@@ -48,7 +48,7 @@ import com.dynamero.pressure.base.PressureComponent;
 import com.dynamero.pressure.base.records.PressureComponentList;
 import com.dynamero.shared.annotations.*;
 import com.dynamero.shared.enumerations.MappedDirection;
-import com.dynamero.shared.network.FluidComponent;
+import com.dynamero.fluid.base.FluidComponent;
 import com.dynamero.shared.records.lists.FluidStackList;
 import com.dynamero.shared.utils.DirectionHelper;
 
@@ -62,10 +62,14 @@ import com.dynamero.shared.utils.DirectionHelper;
  */
 @SuppressWarnings("unused")
 @Developer("TheMentor")
-@CreatedAt("2026-01-12")
+@CreatedAt("2026-08-10")
+@ModifiedAt("2026-08-10")
+@ModifiedBy("TheMentor")
+@Website("https://dynamero.com")
 @Repository("https://github.com/drkhodakarami/")
 @Discord("https://discord.gg/pmM4emCbuH")
 @Youtube("https://www.youtube.com/@TheMentorCodeLab")
+@Modrinth("https://modrinth.com/user/jiraiyah")
 public abstract class AbstractBaseFluidBE<T extends AbstractBaseFluidBE<T, B, C>, B extends SimpleContainer, C extends SingleFluidStorage>
         extends AbstractBaseInventoryBE<T, B>
         implements FluidStorageProvider<C>, FluidConnectorProvider<C>, FluidSpreadHandler<C>

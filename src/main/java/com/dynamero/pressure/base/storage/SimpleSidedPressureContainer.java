@@ -34,10 +34,14 @@ import com.dynamero.shared.utils.MathHelper;
  * Make sure to override {@link #onFinalCommit} to call {@code markDirty} and similar functions.
  */
 @Developer("TheMentor")
-@CreatedAt("2026-01-12")
+@CreatedAt("2026-08-10")
+@ModifiedAt("2026-08-10")
+@ModifiedBy("TheMentor")
+@Website("https://dynamero.com")
 @Repository("https://github.com/drkhodakarami/")
 @Discord("https://discord.gg/pmM4emCbuH")
 @Youtube("https://www.youtube.com/@TheMentorCodeLab")
+@Modrinth("https://modrinth.com/user/jiraiyah")
 public abstract class SimpleSidedPressureContainer extends SnapshotParticipant<Double>
 {
     /**

@@ -16,6 +16,7 @@
 
 package com.dynamero.shared.data;
 
+import com.dynamero.shared.annotations.*;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.fabricmc.fabric.api.transfer.v1.fluid.FluidConstants;
@@ -27,6 +28,15 @@ import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.world.level.material.Fluids;
 
 @SuppressWarnings("unused")
+@Developer("TheMentor")
+@CreatedAt("2026-08-10")
+@ModifiedAt("2026-08-10")
+@ModifiedBy("TheMentor")
+@Website("https://dynamero.com")
+@Repository("https://github.com/drkhodakarami/")
+@Discord("https://discord.gg/pmM4emCbuH")
+@Youtube("https://www.youtube.com/@TheMentorCodeLab")
+@Modrinth("https://modrinth.com/user/jiraiyah")
 public class FluidComponentData
 {
     private long amount;

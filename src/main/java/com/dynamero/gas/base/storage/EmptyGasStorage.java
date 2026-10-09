@@ -27,11 +27,15 @@ import org.jspecify.annotations.NonNull;
  * Immutable no-op gas storage with zero capacity that rejects all insertions and extractions.
  */
 @SuppressWarnings("unused")
-@Developer("TheMentor")
-@CreatedAt("2026-01-12")
+@Developer("TurtyWurty")
+@CreatedAt("2026-08-10")
+@ModifiedAt("2026-08-10")
+@ModifiedBy("TheMentor")
+@Website("https://dynamero.com")
 @Repository("https://github.com/drkhodakarami/")
 @Discord("https://discord.gg/pmM4emCbuH")
 @Youtube("https://www.youtube.com/@TheMentorCodeLab")
+@Modrinth("https://modrinth.com/user/jiraiyah")
 public class EmptyGasStorage extends SingleGasStorage
 {
     /**

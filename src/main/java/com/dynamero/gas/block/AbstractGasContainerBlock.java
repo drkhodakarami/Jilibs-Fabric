@@ -38,10 +38,14 @@ import com.dynamero.shared.properties.BlockProperties;
  */
 @SuppressWarnings("unused")
 @Developer("TheMentor")
-@CreatedAt("2026-01-12")
+@CreatedAt("2026-08-10")
+@ModifiedAt("2026-08-10")
+@ModifiedBy("TheMentor")
+@Website("https://dynamero.com")
 @Repository("https://github.com/drkhodakarami/")
 @Discord("https://discord.gg/pmM4emCbuH")
 @Youtube("https://www.youtube.com/@TheMentorCodeLab")
+@Modrinth("https://modrinth.com/user/jiraiyah")
 public class AbstractGasContainerBlock extends AbstractBaseBlock
 {
     /**

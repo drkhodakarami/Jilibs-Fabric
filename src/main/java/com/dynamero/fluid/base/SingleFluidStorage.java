@@ -27,7 +27,6 @@ import com.dynamero.pressure.base.PressureComponent;
 import com.dynamero.pressure.base.interfaces.PressureUnit;
 import com.dynamero.shared.annotations.*;
 import com.dynamero.shared.constants.BEKeys;
-import com.dynamero.shared.network.FluidComponent;
 
 /**
  * Extended single fluid storage incorporating thermodynamic heat and pneumatic pressure components
@@ -35,10 +34,14 @@ import com.dynamero.shared.network.FluidComponent;
  */
 @SuppressWarnings("unused")
 @Developer("TheMentor")
-@CreatedAt("2026-01-12")
+@CreatedAt("2026-08-10")
+@ModifiedAt("2026-08-10")
+@ModifiedBy("TheMentor")
+@Website("https://dynamero.com")
 @Repository("https://github.com/drkhodakarami/")
 @Discord("https://discord.gg/pmM4emCbuH")
 @Youtube("https://www.youtube.com/@TheMentorCodeLab")
+@Modrinth("https://modrinth.com/user/jiraiyah")
 public abstract class SingleFluidStorage extends net.fabricmc.fabric.api.transfer.v1.fluid.base.SingleFluidStorage
 {
     /**

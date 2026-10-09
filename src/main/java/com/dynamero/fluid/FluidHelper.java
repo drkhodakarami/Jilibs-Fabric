@@ -44,7 +44,7 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import com.dynamero.base.blockentity.AbstractBaseBE;
 import com.dynamero.shared.annotations.*;
 import com.dynamero.shared.enumerations.MappedDirection;
-import com.dynamero.shared.network.FluidComponent;
+import com.dynamero.fluid.base.FluidComponent;
 
 /**
  * Utility helper class providing methods for fluid transfers, inventory slot validation,
@@ -52,10 +52,14 @@ import com.dynamero.shared.network.FluidComponent;
  */
 @SuppressWarnings({"unused", "UnusedReturnValue"})
 @Developer("TheMentor")
-@CreatedAt("2026-01-12")
+@CreatedAt("2026-08-10")
+@ModifiedAt("2026-08-10")
+@ModifiedBy("TheMentor")
+@Website("https://dynamero.com")
 @Repository("https://github.com/drkhodakarami/")
 @Discord("https://discord.gg/pmM4emCbuH")
 @Youtube("https://www.youtube.com/@TheMentorCodeLab")
+@Modrinth("https://modrinth.com/user/jiraiyah")
 public class FluidHelper
 {
     /**

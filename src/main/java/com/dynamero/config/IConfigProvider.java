@@ -16,17 +16,20 @@
 
 package com.dynamero.config;
 
-import com.dynamero.shared.annotations.CreatedAt;
-import com.dynamero.shared.annotations.Developer;
-import com.dynamero.shared.annotations.Repository;
+import com.dynamero.shared.annotations.*;
 
 /**
  * Provides a contract for handling configuration data.
  */
 @Developer("Magistermaks")
-@CreatedAt("2025-04-18")
+@CreatedAt("2026-08-10")
+@ModifiedAt("2026-08-10")
+@ModifiedBy("TheMentor")
+@Website("https://dynamero.com")
 @Repository("https://github.com/magistermaks/fabric-simplelibs/blob/master/simple-config/SimpleConfig.java")
-
+@Discord("https://discord.gg/pmM4emCbuH")
+@Youtube("https://www.youtube.com/@TheMentorCodeLab")
+@Modrinth("https://modrinth.com/user/jiraiyah")
 public interface IConfigProvider
 {
     /**

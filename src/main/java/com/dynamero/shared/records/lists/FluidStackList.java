@@ -27,13 +27,17 @@ import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 
 import com.dynamero.shared.annotations.*;
-import com.dynamero.shared.network.FluidComponent;
+import com.dynamero.fluid.base.FluidComponent;
 
 @Developer("TheMentor")
-@CreatedAt("2026-01-12")
+@CreatedAt("2026-08-10")
+@ModifiedAt("2026-08-10")
+@ModifiedBy("TheMentor")
+@Website("https://dynamero.com")
 @Repository("https://github.com/drkhodakarami/")
 @Discord("https://discord.gg/pmM4emCbuH")
 @Youtube("https://www.youtube.com/@TheMentorCodeLab")
+@Modrinth("https://modrinth.com/user/jiraiyah")
 public record FluidStackList(List<FluidComponent> values)
 {
     public static Codec<FluidStackList> CODEC = FluidComponent.LIST_CODEC.xmap(FluidStackList::new, FluidStackList::values);

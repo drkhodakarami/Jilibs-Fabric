@@ -34,7 +34,6 @@ import com.dynamero.shared.annotations.*;
 import com.dynamero.shared.constants.BEKeys;
 import com.dynamero.shared.enumerations.MappedDirection;
 import com.dynamero.shared.interfaces.StorageConnectorProvider;
-import com.dynamero.shared.network.FluidComponent;
 import com.dynamero.shared.utils.ValueIO;
 
 /**
@@ -45,10 +44,14 @@ import com.dynamero.shared.utils.ValueIO;
  */
 @SuppressWarnings("unused")
 @Developer("TheMentor")
-@CreatedAt("2026-01-12")
+@CreatedAt("2026-08-10")
+@ModifiedAt("2026-08-10")
+@ModifiedBy("TheMentor")
+@Website("https://dynamero.com")
 @Repository("https://github.com/drkhodakarami/")
 @Discord("https://discord.gg/pmM4emCbuH")
 @Youtube("https://www.youtube.com/@TheMentorCodeLab")
+@Modrinth("https://modrinth.com/user/jiraiyah")
 public class FluidConnector<T extends SingleFluidStorage> extends StorageConnector<T> implements StorageConnectorProvider<FluidConnector<T>>
 {
     /**

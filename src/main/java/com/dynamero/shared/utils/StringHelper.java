@@ -20,19 +20,21 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
 
-import com.dynamero.shared.annotations.CreatedAt;
-import com.dynamero.shared.annotations.Developer;
-import com.dynamero.shared.annotations.Repository;
-import com.dynamero.shared.annotations.Youtube;
+import com.dynamero.shared.annotations.*;
 
 /**
  * Provides utility methods for string formatting and numerical conversion.
  */
 @SuppressWarnings("unused")
 @Developer("Direwolf20, TurtyWurty")
-@CreatedAt("2025-04-18")
-@Repository("https://github.com/Direwolf20-MC/JustDireThings")
-@Youtube("https://www.youtube.com/@direwolf20")
+@CreatedAt("2026-08-10")
+@ModifiedAt("2026-08-10")
+@ModifiedBy("TheMentor")
+@Website("https://dynamero.com")
+@Repository("https://github.com/drkhodakarami/")
+@Discord("https://discord.gg/pmM4emCbuH")
+@Youtube("https://www.youtube.com/@TheMentorCodeLab")
+@Modrinth("https://modrinth.com/user/jiraiyah")
 public class StringHelper
 {
     /**
