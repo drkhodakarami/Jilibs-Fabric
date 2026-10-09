@@ -20,6 +20,7 @@ import com.dynamero.base.blockentity.AbstractBaseBE;
 import com.dynamero.shared.annotations.*;
 import com.dynamero.shared.interfaces.BlockEntityScreen;
 import com.dynamero.shared.interfaces.TickProvider;
+import com.dynamero.shared.interfaces.Ticking;
 import com.dynamero.shared.interfaces.WrenchHandler;
 import com.dynamero.shared.properties.BlockProperties;
 import com.mojang.serialization.MapCodec;
@@ -64,14 +65,15 @@ import org.jspecify.annotations.NonNull;
  * custom state properties, GUI interaction, and inventory persistence.
  */
 @SuppressWarnings("unused")
-@Developer("TurtyWurty")
-@ModifiedBy("The Mentor")
-@ThanksTo(discordUsers = "TheWhyEvenHow")
-@CreatedAt("2025-04-18")
-@Repository("https://github.com/DaRealTurtyWurty/Industria")
-@Discord("https://discord.turtywurty.dev/")
-@Youtube("https://www.youtube.com/@TurtyWurty")
-
+@Developer("TheMentor")
+@CreatedAt("2026-08-10")
+@ModifiedAt("2026-08-10")
+@ModifiedBy("TheMentor")
+@Website("https://dynamero.com")
+@Repository("https://github.com/drkhodakarami/")
+@Discord("https://discord.gg/pmM4emCbuH")
+@Youtube("https://www.youtube.com/@TheMentorCodeLab")
+@Modrinth("https://modrinth.com/user/jiraiyah")
 public abstract class AbstractBaseBlock extends Block implements EntityBlock, TickProvider
 {
 	/**
@@ -319,26 +321,46 @@ public abstract class AbstractBaseBlock extends Block implements EntityBlock, Ti
 	/**
 	 * Retrieves the vanilla ticker implementation as a fallback.
 	 *
-	 * <p>Example Method Body:
-	 * <pre>
-	 *     {@code
-	 *          return validateTicker(ModBlockEntities.SOME_BE,
-	 *                               (world1, pos, state1, blockEntity) ->
-	 *                               {
-	 *                                   blockEntity.tick(world1, pos, state1);
-	 *                               });
-	 *     }
-	 * </pre>
-	 *
 	 * @param <T>   the block entity type
 	 * @param world the world
 	 * @param state the block state
 	 * @param type  the block entity type to tick
 	 * @return the block entity ticker
 	 */
-	protected <T extends BlockEntity> BlockEntityTicker<T> getVanillaTicker(Level world, BlockState state, BlockEntityType<T> type)
+	private <T extends BlockEntity> BlockEntityTicker<T> getVanillaTicker(Level world, BlockState state, BlockEntityType<T> type)
 	{
-		return EntityBlock.super.getTicker(world, state, type);
+		BlockEntityType<?> expectedType = this.properties.getBEType() != null
+		                                  ? this.properties.getBEType()
+		                                  : null;
+
+		if (expectedType == null)
+			return null;
+
+		// Delegate to generic helper that captures E cleanly
+		return createVanillaTicker(type, expectedType, world);
+	}
+
+	/**
+	 * Generic capture helper to satisfy validateTicker without unchecked casting warnings.
+	 */
+	private <T extends BlockEntity, E extends BlockEntity> BlockEntityTicker<T> createVanillaTicker(
+			BlockEntityType<T> givenType,
+			BlockEntityType<E> expectedType,
+			Level world)
+	{
+		return validateTicker(
+				givenType,
+				expectedType,
+				(w, p, s, be) -> {
+					if (be instanceof Ticking ticking) {
+						if (!world.isClientSide()) {
+							ticking.tick();
+						} else {
+							ticking.tickClient();
+						}
+					}
+				}
+		);
 	}
 
 	/**
