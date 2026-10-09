@@ -1,0 +1,247 @@
+gradle.projectsEvaluated {
+    tasks.withType(Task).configureEach {
+        if(name == 'assemble') {
+            group = "z-never used"
+        }
+        if (name == 'buildDependents') {
+            group = "z-never used"
+        }
+        if (name == 'buildNeeded') {
+            group = "z-never used"
+        }
+        if (name == 'classes') {
+            group = "z-never used"
+        }
+        if (name == 'clientClasses') {
+            group = "z-never used"
+        }
+        if (name == 'jar') {
+            group = "z-never used"
+        }
+        if (name == 'sourcesJar') {
+            group = "z-never used"
+        }
+        if (name == 'testClasses') {
+            group = "z-never used"
+        }
+        if (name == 'init') {
+            group = "z-never used"
+        }
+        if (name == 'updateDaemonJvm') {
+            group = "z-never used"
+        }
+        if (name == 'wrapper') {
+            group = "z-never used"
+        }
+        if (name == 'spotlessInstallGitPrePushHook') {
+            group = "z-never used"
+        }
+        if (name == 'javadoc') {
+            group = "z-never used"
+        }
+        if (name == 'configureClientLaunch') {
+            group = "z-never used"
+        }
+        if (name == 'configureLaunch') {
+            group = "z-never used"
+        }
+        if (name == 'downloadRenderDoc') {
+            group = "z-never used"
+        }
+        if (name == 'genClientOnlySources') {
+            group = "z-never used"
+        }
+        if (name == 'genClientOnlySourcesWithCfr') {
+            group = "z-never used"
+        }
+        if (name == 'genClientOnlySourcesWithCfr') {
+            group = "z-never used"
+        }
+        if (name == 'genClientOnlySourcesWithVineflower') {
+            group = "z-never used"
+        }
+        if (name == 'genCommonSources') {
+            group = "z-never used"
+        }
+        if (name == 'genCommonSourcesWithCfr') {
+            group = "z-never used"
+        }
+        if (name == 'genCommonSourcesWithVineflower') {
+            group = "z-never used"
+        }
+        if (name == 'exportClasspath') {
+            group = "z-never used"
+        }
+        if (name == 'extractRenderDoc') {
+            group = "z-never used"
+        }
+        if (name == 'generateDLIConfig') {
+            group = "z-never used"
+        }
+        if (name == 'generateLog4jConfig') {
+            group = "z-never used"
+        }
+        if (name == 'genSourcesWithCfr') {
+            group = "z-never used"
+        }
+        if (name == 'genSourcesWithVineflower') {
+            group = "z-never used"
+        }
+        if (name == 'processIncludeJars') {
+            group = "z-never used"
+        }
+        if (name == 'runClientRenderDoc') {
+            group = "z-never used"
+        }
+        if (name == 'startRenderDocUI') {
+            group = "z-never used"
+        }
+        if (name == 'artifactTransforms') {
+            group = "z-never used"
+        }
+        if (name == 'buildEnvironment') {
+            group = "z-never used"
+        }
+        if (name == 'dependencies') {
+            group = "z-never used"
+        }
+        if (name == 'dependencyInsight') {
+            group = "z-never used"
+        }
+        if (name == 'help') {
+            group = "z-never used"
+        }
+        if (name == 'javaToolchains') {
+            group = "z-never used"
+        }
+        if (name == 'outgoingVariants') {
+            group = "z-never used"
+        }
+        if (name == 'projects') {
+            group = "z-never used"
+        }
+        if (name == 'properties') {
+            group = "z-never used"
+        }
+        if (name == 'resolvableConfigurations') {
+            group = "z-never used"
+        }
+        if (name == 'tasks') {
+            group = "z-never used"
+        }
+        if (name == 'cleanEclipse') {
+            group = "z-never used"
+        }
+        if (name == 'eclipse') {
+            group = "z-never used"
+        }
+        if (name == 'genEclipseRuns') {
+            group = "z-never used"
+        }
+        if (name == 'vscode') {
+            group = "z-never used"
+        }
+        if (name == 'cleanEclipseClasspath') {
+            group = "z-never used"
+        }
+        if (name == 'cleanEclipseJdt') {
+            group = "z-never used"
+        }
+        if (name == 'cleanEclipseProject') {
+            group = "z-never used"
+        }
+        if (name == 'compileClientJava') {
+            group = "z-never used"
+        }
+        if (name == 'compileJava') {
+            group = "z-never used"
+        }
+        if (name == 'compileTestJava') {
+            group = "z-never used"
+        }
+        if (name == 'eclipseClasspath') {
+            group = "z-never used"
+        }
+        if (name == 'eclipseJdt') {
+            group = "z-never used"
+        }
+        if (name == 'eclipseProject') {
+            group = "z-never used"
+        }
+        if (name == 'prepareKotlinBuildScriptModel') {
+            group = "z-never used"
+        }
+        if (name == 'processClientResources') {
+            group = "z-never used"
+        }
+        if (name == 'processResources') {
+            group = "z-never used"
+        }
+        if (name == 'processTestResources') {
+            group = "z-never used"
+        }
+        if (name == 'spotlessInternalRegisterDependencies') {
+            group = "z-never used"
+        }
+        if (name == 'check') {
+            group = "z-never used"
+        }
+        if (name == 'validateAccessWidener') {
+            group = "build"
+        }
+        if (name == 'test') {
+            group = "z-never used"
+        }
+        if (name == 'spotlessApply') {
+            group = "spotless"
+        }
+        if (name == 'spotlessCheck') {
+            group = "spotless"
+        }
+        if (name == 'spotlessDiagnose') {
+            group = "spotless"
+        }
+        if (name == 'spotlessJava') {
+            group = "z-never used"
+        }
+        if (name == 'spotlessJavaApply') {
+            group = "z-never used"
+        }
+        if (name == 'spotlessJavaCheck') {
+            group = "z-never used"
+        }
+        if (name == 'spotlessJavaDiagnose') {
+            group = "z-never used"
+        }
+        if (name == 'spotlessGroovyGradle') {
+            group = "z-never used"
+        }
+        if (name == 'spotlessGroovyGradleApply') {
+            group = "z-never used"
+        }
+        if (name == 'spotlessGroovyGradleCheck') {
+            group = "z-never used"
+        }
+        if (name == 'spotlessGroovyGradleDiagnose') {
+            group = "z-never used"
+        }
+        if (name == 'spotlessJson') {
+            group = "z-never used"
+        }
+        if (name == 'spotlessJsonApply') {
+            group = "z-never used"
+        }
+        if (name == 'spotlessJsonCheck') {
+            group = "z-never used"
+        }
+        if (name == 'spotlessJsonDiagnose') {
+            group = "z-never used"
+        }
+        if (name == 'modrinthSyncBody') {
+            group = "z-never used"
+        }
+        if (name == 'curseforge') {
+            group = "publishing"
+        }
+    }
+}

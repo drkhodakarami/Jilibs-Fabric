@@ -1,0 +1,36 @@
+{
+	"schemaVersion": 1,
+	"id": "${modid}",
+	"version": "${version}",
+	"name": "Jilibs - Fabric",
+	"description": "This is the global library system that contains many sub modules for modding minecraft in fabric. It covers registry, gas, heat, pressure, multiblock, pipenetwork and many more systems.",
+	"authors": [
+		"TheMentor"
+	],
+	"contact": {
+		"homepage": "https://www.dynamero.com/",
+		"sources": "https://github.com/drkhodakarami/JiLibs-fabric/issues",
+		"issues": "https://github.com/drkhodakarami/JiLibs-fabric"
+	},
+	"license": "MIT",
+	"icon": "assets/jilibs_fabric/icon.png",
+	"environment": "*",
+	"accessWidener": "jilibs_fabric.classtweaker",
+	"entrypoints": {
+		"main": [
+			"com.dynamero.Jilibs"
+		],
+		"client": [
+			"com.dynamero.JilibsClient"
+		]
+	},
+	"mixins": [
+		"jilibs_fabric.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=${loader_ver}",
+		"minecraft": "~${game_ver}",
+		"java": ">=${java_ver}",
+		"fabric-api": "*"
+	}
+}

@@ -1,0 +1,71 @@
+// =====================================================================================
+//                          STANDARD JAVADOC (Java 25 Safe)
+// =====================================================================================
+tasks.withType(Javadoc).configureEach {
+    // 1. Force execution every time without breaking configuration cache
+    outputs.upToDateWhen { false }
+
+    // 2. Prevents missing comments/tags from breaking the build
+    failOnError = false //<<<<< comment the line for failing on problems
+
+    source = project.hasProperty('sourceSets') ? sourceSets.main.allJava : files()
+    classpath = project.hasProperty('sourceSets') ? sourceSets.main.compileClasspath : files()
+
+    // If source is still empty (e.g. multi-module project where code is in subprojects):
+    if (source.empty && !subprojects.empty) {
+        source = subprojects.collect { it.sourceSets.main.allJava }
+        classpath = files(subprojects.collect { it.sourceSets.main.compileClasspath })
+    }
+
+    destinationDir = layout.buildDirectory.dir("docs/javadoc").get().asFile
+    failOnError = false
+
+    options {
+        // Comment the line for failing on problems
+        addStringOption('Xdoclint:none', '-quiet')
+        // Or if you only want to ignore missing comments but keep checking syntax:
+        // addStringOption('Xdoclint:-missing', '-quiet')
+
+        encoding = 'UTF-8'
+        charSet = 'UTF-8'
+        addBooleanOption('html5', true)
+        addStringOption('Xdoclint:none', '-quiet')
+
+        // 3. CRITICAL: Use --add-stylesheet (keeps original layout & adds dark rules)
+        def darkCss = file('gradle/docs/dark-mode.css')
+        if (darkCss.exists()) {
+            addFileOption('-add-stylesheet', darkCss)
+        }
+
+        // 4. Add the URL-to-link script
+        def linkScript = file('gradle/docs/linkify-annotations.js')
+        if (linkScript.exists()) {
+            addFileOption('-add-script', linkScript)
+        }
+    }
+}
+
+// =====================================================================================
+//                          DOKKA CONFIGURATION (Lazy-Safe)
+// =====================================================================================
+if (plugins.hasPlugin('org.jetbrains.dokka')) {
+    dokka {
+        dokkaPublications.html {
+            moduleName.set("JiLibs")
+            outputDirectory.set(layout.buildDirectory.dir("dokka/html"))
+        }
+    }
+
+    // Configure Dokka task lazily by explicit name after evaluation
+    afterEvaluate {
+        tasks.named('dokkaGeneratePublicationHtml').configure {
+            // Only configures if toolchains are available
+            def javaToolchains = project.extensions.findByType(JavaToolchainService)
+            if (javaToolchains != null) {
+                launcher.set(javaToolchains.launcherFor {
+                    languageVersion = JavaLanguageVersion.of(21)
+                })
+            }
+        }
+    }
+}

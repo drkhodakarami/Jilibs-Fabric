@@ -1,0 +1,76 @@
+tasks.withType(JavaCompile) {
+    options.compilerArgs << '-Xlint:unchecked' // show unchecked warnings during the build
+    //options.compilerArgs << '-Xlint:deprecation' // (optional) also see deprecated warnings
+}
+
+clean.doFirst {
+    def versionPattern = version
+    def projectSrcDir = file("${project.rootProject.file("../../")}/_BUILDS_/${project.name}/SRC")
+    def projectModDir = file("${project.rootProject.file("../../")}/_BUILDS_/${project.name}/MOD")
+
+    println ">>> Starting clean task"
+    println ">>> Version To Clean: ${versionPattern}"
+
+    def safeDelete = { File dir ->
+        if(dir.exists() && dir.isDirectory()) {
+            dir.eachFileRecurse { file ->
+                if(file.isFile()) {
+                    if(file.name.contains(versionPattern) && file.name.contains(project.base.archivesName.get())) {
+                        file.delete()
+                        print ">>> Deleted File: ${file.name}"
+                    }
+                }
+            }
+        } else {
+            println ">>> Skipping non-existing or non-directory path: ${dir}"
+        }
+    }
+
+    safeDelete(projectSrcDir)
+    safeDelete(projectModDir)
+}
+
+tasks.register("copySourceJars", Copy) {
+    description = "Copies source JARs from libs to a top-level directory"
+    group = "z-never used"
+
+    dependsOn sourcesJar // Explicit dependency declaration
+
+    def projectSrcDir = file("${project.rootProject.file("../../")}/_BUILDS_/${project.name}/SRC")
+
+    doFirst {
+        // Create the destination directory if it doesn't exist
+        if(!projectSrcDir.exists())
+            projectSrcDir.mkdirs()
+    }
+
+    from(layout.buildDirectory.dir("libs").get().asFile) {
+        include '*-sources.jar'
+    }
+    into(projectSrcDir)
+}
+
+tasks.register("copyModJars", Copy) {
+    description = "Copies main JARs from libs to a top-level directory"
+    group = "z-never used"
+
+    dependsOn jar // Explicit dependency declaration
+
+    def projectModDir = file("${project.rootProject.file("../../")}/_BUILDS_/${project.name}/MOD")
+
+    doFirst {
+        // Create the destination directory if it doesn't exist
+        if(!projectModDir.exists())
+            projectModDir.mkdirs()
+    }
+
+    from(layout.buildDirectory.dir("libs").get().asFile) {
+        include '*.jar'
+        exclude '*-sources.jar'
+    }
+    into(projectModDir)
+}
+
+tasks.named('jar').configure {
+    finalizedBy(copySourceJars, copyModJars)
+}

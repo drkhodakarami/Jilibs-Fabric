@@ -1,0 +1,35 @@
+classTweaker  v1  official
+
+transitive-accessible method net/minecraft/util/random/WeightedList	<init> (Ljava/util/List;)V
+
+transitive-accessible field net/minecraft/util/valueproviders/ClampedInt source Lnet/minecraft/util/valueproviders/IntProvider;
+transitive-accessible field net/minecraft/util/valueproviders/WeightedListInt distribution Lnet/minecraft/util/random/WeightedList;
+transitive-accessible field net/minecraft/util/valueproviders/ClampedNormalInt mean F
+transitive-accessible field net/minecraft/util/valueproviders/ClampedNormalFloat mean F
+transitive-accessible field net/minecraft/util/valueproviders/ClampedNormalInt deviation F
+transitive-accessible field net/minecraft/util/valueproviders/ClampedNormalFloat deviation F
+transitive-accessible field net/minecraft/util/valueproviders/TrapezoidFloat plateau F
+
+transitive-accessible field net/minecraft/data/recipes/RecipeProvider SHAPE_BUILDERS Ljava/util/Map;
+transitive-accessible class net/minecraft/data/recipes/RecipeProvider$FamilyCraftingRecipeProvider
+
+transitive-accessible field net/minecraft/world/item/equipment/EquipmentAssets ROOT_ID Lnet/minecraft/resources/ResourceKey;
+
+transitive-mutable field net/minecraft/world/level/block/Block stateDefinition Lnet/minecraft/world/level/block/state/StateDefinition;
+
+transitive-accessible method net/minecraft/client/gui/GuiGraphicsExtractor innerBlit (Lcom/mojang/blaze3d/pipeline/RenderPipeline;Lnet/minecraft/resources/Identifier;IIIIFFFFI)V
+
+transitive-mutable field net/minecraft/client/gui/screens/inventory/AbstractContainerScreen imageWidth I
+transitive-mutable field net/minecraft/client/gui/screens/inventory/AbstractContainerScreen imageHeight I
+
+transitive-accessible field net/minecraft/client/data/models/BlockModelGenerators ROTATION_HORIZONTAL_FACING Lnet/minecraft/client/data/models/blockstates/PropertyDispatch;
+
+transitive-accessible field net/minecraft/data/loot/BlockLootSubProvider NORMAL_LEAVES_SAPLING_CHANCES [F
+
+transitive-accessible method net/minecraft/data/worldgen/placement/OrePlacements orePlacement (Lnet/minecraft/world/level/levelgen/placement/PlacementModifier;Lnet/minecraft/world/level/levelgen/placement/PlacementModifier;)Ljava/util/List;
+transitive-accessible method net/minecraft/data/worldgen/placement/OrePlacements commonOrePlacement (ILnet/minecraft/world/level/levelgen/placement/PlacementModifier;)Ljava/util/List;
+transitive-accessible method net/minecraft/data/worldgen/placement/OrePlacements rareOrePlacement (ILnet/minecraft/world/level/levelgen/placement/PlacementModifier;)Ljava/util/List;
+
+transitive-accessible method net/minecraft/client/renderer/feature/NameTagFeatureRenderer prepareText (Lnet/minecraft/client/gui/Font;Lnet/minecraft/client/renderer/feature/NameTagFeatureRenderer$Submit;)Lnet/minecraft/client/gui/Font$PreparedText;
+transitive-accessible class net/minecraft/client/renderer/feature/NameTagFeatureRenderer$GlyphRenderer
+transitive-accessible method net/minecraft/client/renderer/feature/NameTagFeatureRenderer buildGroup (Lnet/minecraft/client/renderer/feature/FeatureFrameContext;Ljava/util/List;)V

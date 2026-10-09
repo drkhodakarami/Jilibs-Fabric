@@ -1,0 +1,15 @@
+def loaderVer = project.ext.loaderVersion
+def gameVer = project.ext.minecraftVersion
+def fabricVer = project.ext.fabricVersion
+def energyVer = project.ext.energyVersion
+
+dependencies {
+    minecraft "com.mojang:minecraft:${gameVer}"
+    implementation "net.fabricmc:fabric-loader:${loaderVer}"
+    implementation "net.fabricmc.fabric-api:fabric-api:${fabricVer}+${gameVer.replaceAll('-snapshot.*', '')}"
+
+    // Energy API Handling Dependency ================================================================================================================
+    include api("teamreborn:energy:${energyVer}") {
+        exclude(group: "net.fabricmc.fabric-api")
+    }
+}

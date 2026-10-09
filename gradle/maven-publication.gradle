@@ -1,0 +1,119 @@
+def ENV = System.getenv()
+def systemRepsyURL = ENV.REPSY_URL
+def systemRepsyUsername = ENV.REPSY_USERNAME
+def systemRepsyPassword = ENV.REPSY_PASSWORD
+
+Properties properties = new Properties()
+def propertiesFile = project.rootProject.file('local.properties')
+if (propertiesFile.exists())
+    properties.load(propertiesFile.newDataInputStream())
+
+project.ext {
+    localRepsyUrl = properties.getProperty('REPSY_URL')
+    localRepsyUsername = properties.getProperty('REPSY_USERNAME')
+    localRepsyPassword = properties.getProperty('REPSY_PASSWORD')
+}
+
+def repsyUrl = project.ext.localRepsyUrl ?: systemRepsyURL
+def repsyUsername = project.ext.localRepsyUsername ?: systemRepsyUsername
+def repsyPassword = project.ext.localRepsyPassword ?: systemRepsyPassword
+
+build.dependsOn javadocJar
+
+publishing {
+
+    setupRepositories(repositories, repsyUrl, repsyUsername, repsyPassword)
+
+    publications {
+        mavenJava(MavenPublication) {
+            artifact(jar) {
+                builtBy(jar)
+            }
+
+            artifact(sourcesJar) {
+                builtBy sourcesJar
+            }
+
+            //from components.java
+            // If java.withJavadocJar() is enabled, adding this line creates a duplicate artifact collision:
+            //artifact tasks.named('javadocJar')
+
+            pom {
+                addPomMetadataInformation(rootProject, pom)
+            }
+
+            List<Map<String, String>> dependencies = []
+
+            subprojects.each {
+
+                if (metaProjects.contains(it.name)) {
+                    return
+                }
+
+                dependencies.add([
+                        'groupId': it.group,
+                        'artifactId': it.name,
+                        'version': getSubprojectVersion(it),
+                        'scope': 'compile'
+                ])
+            }
+
+            pom.withXml {
+                def depsNode = asNode().appendNode("dependencies")
+                for (dep in dependencies) {
+                    def depNode = depsNode.appendNode("dependency")
+                    depNode.appendNode("groupId", dep['groupId'])
+                    depNode.appendNode("artifactId", dep['artifactId'])
+                    depNode.appendNode("version", dep['version'])
+                    depNode.appendNode("scope", dep['scope'])
+                }
+            }
+        }
+    }
+}
+
+import groovy.json.JsonSlurper
+
+def addPomMetadataInformation(Project project, MavenPom pom) {
+    def modJsonFile = project.file("src/main/resources/fabric.mod.json")
+
+    def modJson = new JsonSlurper().parse(modJsonFile)
+    pom.name = modJson.name
+    pom.url = "https://github.com/drkhodakarami/JiLibs-fabric/tree/HEAD/${project.rootDir.relativePath(project.projectDir)}"
+    pom.description = modJson.description
+    pom.licenses {
+        license {
+            name = "MIT"
+            url = "https://opensource.org/license/mit"
+        }
+    }
+    pom.developers {
+        developer {
+            name = "TheMentor"
+            url = "https://www.dynamero.com"
+        }
+    }
+    pom.scm {
+        connection = "scm:git:https://github.com/drkhodakarami/JiLibs-fabric.git"
+        url = "https://github.com/drkhodakarami/JiLibs-fabric"
+        developerConnection = "scm:git:git@github.com:drkhodakarami/JiLibs-fabric.git"
+    }
+    pom.issueManagement {
+        system = "GitHub"
+        url = "https://github.com/drkhodakarami/JiLibs/issues"
+    }
+}
+
+void setupRepositories(RepositoryHandler repositories, String repsyUrl, String repsyUsername, String repsyPassword) {
+    //===================================================== >>> LOCAL MAVEN <<<
+    repositories.mavenLocal() // uncomment for testing
+    if (repsyUrl) {
+        repositories.maven {
+            url = repsyUrl
+            credentials {
+                username = repsyUsername
+                password = repsyPassword
+            }
+        }
+    }
+}

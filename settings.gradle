@@ -1,0 +1,26 @@
+pluginManagement {
+
+    def loomProps = new Properties()
+    file("${rootDir.parent}/dependencies.properties").withReader {reader ->
+        loomProps.load(reader)
+    }
+
+    repositories {
+        maven {
+            name = 'Fabric'
+            url = 'https://maven.fabricmc.net/'
+        }
+        mavenCentral()
+        gradlePluginPortal()
+    }
+
+    plugins {
+        id 'net.fabricmc.fabric-loom' version loomProps.getProperty('loom_version')
+        id 'com.diffplug.spotless' version loomProps.getProperty('spotless_version')
+        id 'com.matthewprenger.cursegradle' version loomProps.getProperty('cursegralde_version')
+        id 'com.modrinth.minotaur' version loomProps.getProperty('minotaur_version')
+    }
+}
+
+// Should match your modid
+rootProject.name = 'jilibs'

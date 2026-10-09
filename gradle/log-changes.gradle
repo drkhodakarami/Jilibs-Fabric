@@ -1,0 +1,17 @@
+def changelogText = "No Changelog Provided"
+
+def changelogFile = new File(rootDir, 'CHANGELOG')
+
+if(changelogFile.exists() && changelogFile.isFile()){
+    def content = changelogFile.text.trim()
+    if(!content.isEmpty()){
+        changelogText = content
+    }
+}
+
+logger.lifecycle("========================================================================")
+logger.lifecycle("Mod: ${archiveName}")
+logger.lifecycle("Version: ${modVersion}")
+logger.lifecycle("========================================================================")
+logger.lifecycle("Changelog: \n{}", changelogText)
+logger.lifecycle("========================================================================")

@@ -1,0 +1,14 @@
+def modId = project.ext.modId
+def archiveName = project.ext.archiveName
+
+base{
+    archivesName = "${archiveName}"
+}
+
+loom {
+    accessWidenerPath = file("src/main/resources/${modId}.classtweaker")
+
+    runConfigs.configureEach{
+        ideConfigGenerated = false
+    }
+}

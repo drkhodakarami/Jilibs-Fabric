@@ -1,0 +1,25 @@
+def modId = project.ext.modId
+def modVersion = project.ext.modVersion
+def loaderVer = project.ext.loaderVersion
+def gameVer = project.ext.minecraftVersion
+def javaVer = project.ext.javaVersion
+
+processResources {
+    inputs.property "version", modVersion
+    inputs.property "modid", modId
+    inputs.property "loader_ver", loaderVer
+    inputs.property "game_ver", gameVer
+    inputs.property "java_ver", javaVer
+
+    filesMatching("fabric.mod.json") {
+        expand "version": modVersion,
+                "modid": modId,
+                "loader_ver": loaderVer,
+                "game_ver": gameVer,
+                "java_ver": javaVer
+    }
+
+    filesMatching("${modId}.mixins.json") {
+        expand "java_ver": javaVer
+    }
+}

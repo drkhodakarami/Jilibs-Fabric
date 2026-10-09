@@ -1,0 +1,35 @@
+// Gradle     Latest : https://gradle.org/releases/
+// Spotless   Latest : https://plugins.gradle.org/plugin/com.diffplug.spotless
+// Curseforge Latest : https://plugins.gradle.org/plugin/com.matthewprenger.cursegradle
+// Modrinth   Latest : https://plugins.gradle.org/plugin/com.modrinth.minotaur
+// Dokka      Latest : https://plugins.gradle.org/plugin/org.jetbrains.dokka
+
+plugins {
+    id 'net.fabricmc.fabric-loom'
+    id 'maven-publish'
+    id 'eclipse'
+    id 'com.diffplug.spotless'
+    id 'com.matthewprenger.cursegradle'
+    id 'com.modrinth.minotaur'
+    id 'org.jetbrains.dokka' version "${dokka_version}"
+}
+
+apply from: 'gradle/javaDocs.gradle'
+apply from: 'gradle/import-properties.gradle'
+apply from: 'gradle/log-changes.gradle'
+
+version = modVersion
+group = "com.dynamero.jilibs"
+
+apply from: 'gradle/loom-fab.gradle'
+apply from: 'gradle/repositories.gradle'
+apply from: 'gradle/dependencies.gradle'
+apply from: 'gradle/process-resources.gradle'
+
+apply from: 'gradle/spotless.gradle'
+apply from: 'gradle/tasks-java-jar.gradle'
+apply from: 'gradle/tasks-custom.gradle'
+apply from: 'gradle/modrinth-publication.gradle'
+apply from: 'gradle/curseforge-publication.gradle'
+apply from: 'gradle/tasks-organize.gradle'
+apply from: 'gradle/maven-publication.gradle'

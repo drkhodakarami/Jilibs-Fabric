@@ -1,0 +1,25 @@
+spotless {
+    lineEndings 'UNIX'
+
+    java {
+        licenseHeaderFile("${rootDir.parent}/HEADER")
+        removeUnusedImports()
+        importOrder('java', 'javax', '', 'net.minecraft', 'dev.thementor.api', 'dev.thementor', 'com.dynamero')
+        leadingTabsToSpaces(4)
+        //leadingSpacesToTabs()
+        trimTrailingWhitespace()
+    }
+
+    groovyGradle {
+        target('src/**/*.gradle', '*.gradle', 'gradle/*.gradle')
+        leadingSpacesToTabs()
+        leadingTabsToSpaces(4)
+        trimTrailingWhitespace()
+    }
+
+    json {
+        target 'src/**/lang/en_us.json'
+        targetExclude 'src/**/generated/**'
+        gson().indentWithSpaces(2).sortByKeys()
+    }
+}

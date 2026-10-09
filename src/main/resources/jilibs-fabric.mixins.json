@@ -1,0 +1,14 @@
+{
+	"required": true,
+	"package": "com.dynamero.mixin",
+	"compatibilityLevel": "JAVA_${java_ver}",
+	"mixins": [
+      "BlockEntityTypeAccessor"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	},
+	"overwrites": {
+		"requireAnnotations": true
+	}
+}

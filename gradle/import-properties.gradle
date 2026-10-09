@@ -1,0 +1,31 @@
+def modVariableName = "jilibs"
+
+def sharedProps = new Properties()
+file("${rootDir.parent}/dependencies.properties").withReader {reader ->
+    sharedProps.load(reader)
+}
+
+// Attach to project.ext instead of script ext
+project.ext {
+    //region MINECRAFT VERSIONS
+    ext.javaVersion = sharedProps.getProperty("java_version")
+    ext.minecraftVersion = sharedProps.getProperty("minecraft_version")
+    ext.loaderVersion = sharedProps.getProperty("loader_version")
+    ext.fabricVersion = sharedProps.getProperty("fabric_version")
+    //endregion
+
+    //region MOD PROPERTIES
+    ext.modVersion = sharedProps.getProperty("${modVariableName}_version")
+    ext.archiveName = sharedProps.getProperty("${modVariableName}_archives_base_name")
+    ext.modId = sharedProps.getProperty("${modVariableName}_fabric_modid")
+    ext.releaseType = sharedProps.getProperty("${modVariableName}_release_type")
+    //endregion
+
+    //region DEPENDENCY VERSIONS
+    ext.energyVersion = sharedProps.getProperty("energy_version")
+    //endregion
+}
+
+if (!project.ext.modId) {
+    throw new GradleException("Mod ID Property (${modVariableName}_modid) is not set in dependencies file.")
+}

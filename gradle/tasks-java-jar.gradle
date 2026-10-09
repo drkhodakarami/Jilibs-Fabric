@@ -1,0 +1,32 @@
+def projectName = project.name
+
+tasks.withType(JavaCompile).configureEach {
+    it.options.release = 25
+}
+
+tasks.register('javadocJar', Jar) {
+    dependsOn javadoc
+    from tasks.named('javadoc')
+    //Set as `fatjavadoc` to prevent an ide form trying to use this javadoc, over using the modules javadoc
+    archiveClassifier = "javadoc"
+}
+
+tasks.named('javadoc') {
+    options.addBooleanOption('html5', true)
+}
+
+java {
+    withSourcesJar()
+    withJavadocJar()
+
+    sourceCompatibility = JavaVersion.VERSION_25
+    targetCompatibility = JavaVersion.VERSION_25
+}
+
+jar {
+    inputs.property "projectName", projectName
+
+    from("LICENSE") {
+        rename { String filename -> "${filename}_${projectName}" }
+    }
+}
