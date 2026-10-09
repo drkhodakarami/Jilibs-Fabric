@@ -52,7 +52,7 @@ publishing {
 
                 dependencies.add([
                         'groupId': it.group,
-                        'artifactId': it.name,
+                        'artifactId': "${it.name}-fabric",
                         'version': getSubprojectVersion(it),
                         'scope': 'compile'
                 ])
@@ -79,11 +79,11 @@ def addPomMetadataInformation(Project project, MavenPom pom) {
 
     def modJson = new JsonSlurper().parse(modJsonFile)
     pom.name = modJson.name
-    pom.url = "https://github.com/drkhodakarami/JiLibs-fabric/tree/HEAD/${project.rootDir.relativePath(project.projectDir)}"
+    pom.url = "https://github.com/drkhodakarami/JiLibs-Fabric/tree/HEAD/${project.rootDir.relativePath(project.projectDir)}"
     pom.description = modJson.description
     pom.licenses {
         license {
-            name = "MIT"
+            name = "LGPL-3.0"
             url = "https://opensource.org/license/mit"
         }
     }
@@ -94,13 +94,13 @@ def addPomMetadataInformation(Project project, MavenPom pom) {
         }
     }
     pom.scm {
-        connection = "scm:git:https://github.com/drkhodakarami/JiLibs-fabric.git"
-        url = "https://github.com/drkhodakarami/JiLibs-fabric"
-        developerConnection = "scm:git:git@github.com:drkhodakarami/JiLibs-fabric.git"
+        connection = "scm:git:https://github.com/drkhodakarami/JiLibs-Fabric.git"
+        url = "https://github.com/drkhodakarami/JiLibs-Fabric"
+        developerConnection = "scm:git:git@github.com:drkhodakarami/JiLibs-Fabric.git"
     }
     pom.issueManagement {
         system = "GitHub"
-        url = "https://github.com/drkhodakarami/JiLibs/issues"
+        url = "https://github.com/drkhodakarami/JiLibs-Fabric/issues"
     }
 }
 
