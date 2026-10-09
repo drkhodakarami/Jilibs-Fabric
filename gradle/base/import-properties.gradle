@@ -8,6 +8,10 @@ if (!depsFile.exists()) {
     depsFile = file("${rootDir.parent}/dependencies.properties")
 }
 
+if (!depsFile.exists()) {
+    depsFile = file("${rootDir.parent}/shared-config/dependencies.properties")
+}
+
 depsFile.withReader { reader ->
     sharedProps.load(reader)
 }

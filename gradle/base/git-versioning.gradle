@@ -2,13 +2,14 @@ def modVer = project.ext.modVersion
 
 def getCommitCount = { ->
     try {
-        def stdout = new ByteArrayOutputStream()
-        exec {
+        def count = project.providers.exec {
+            workingDir = project.rootDir
             commandLine 'git', 'rev-list', '--count', 'HEAD'
-            standardOutput = stdout
-        }
-        return stdout.toString().trim()
-    } catch (Exception ignored) {
+        }.standardOutput.asText.get().trim()
+        return count
+    } catch (Exception e) {
+        println ">>> GIT COUNT FAILED: ${e.message}"
+        e.printStackTrace()
         return "0"
     }
 }

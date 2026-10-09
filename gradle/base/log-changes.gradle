@@ -11,7 +11,7 @@ if(changelogFile.exists() && changelogFile.isFile()){
 
 logger.lifecycle("========================================================================")
 logger.lifecycle("Mod: ${archiveName}")
-logger.lifecycle("Version: ${modVersion}")
+logger.lifecycle("Version: ${version}")
 logger.lifecycle("========================================================================")
 logger.lifecycle("Changelog: \n{}", changelogText)
 logger.lifecycle("========================================================================")

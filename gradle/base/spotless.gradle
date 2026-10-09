@@ -2,7 +2,7 @@ spotless {
     lineEndings 'UNIX'
 
     java {
-        licenseHeaderFile("${rootDir.parent}/HEADER")
+        licenseHeaderFile("${rootDir.parent}/shared-config/HEADER")
         removeUnusedImports()
         importOrder('java', 'javax', '', 'net.minecraft', 'dev.thementor.api', 'dev.thementor', 'com.dynamero')
         leadingTabsToSpaces(4)

@@ -16,11 +16,11 @@ plugins {
 
 apply from: 'gradle/base/javaDocs.gradle'
 apply from: 'gradle/base/import-properties.gradle'
+apply from: 'gradle/base/git-versioning.gradle'
 apply from: 'gradle/base/log-changes.gradle'
 
 group = "com.dynamero.jilibs"
 
-apply from: 'gradle/base/git-versioning.gradle'
 apply from: 'gradle/base/loom-fab.gradle'
 apply from: 'gradle/base/repositories.gradle'
 apply from: 'gradle/dependencies.gradle'
