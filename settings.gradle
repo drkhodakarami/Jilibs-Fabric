@@ -1,7 +1,14 @@
 pluginManagement {
 
     def loomProps = new Properties()
-    file("${rootDir.parent}/dependencies.properties").withReader {reader ->
+
+    def depsFile = file("dependencies.properties")
+
+    if (!depsFile.exists()) {
+        depsFile = file("${rootDir.parent}/dependencies.properties")
+    }
+
+    depsFile.withReader { reader ->
         loomProps.load(reader)
     }
 

@@ -1,7 +1,14 @@
 def modVariableName = "jilibs"
 
 def sharedProps = new Properties()
-file("${rootDir.parent}/dependencies.properties").withReader {reader ->
+
+def depsFile = file("dependencies.properties")
+
+if (!depsFile.exists()) {
+    depsFile = file("${rootDir.parent}/dependencies.properties")
+}
+
+depsFile.withReader { reader ->
     sharedProps.load(reader)
 }
 
