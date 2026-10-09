@@ -21,24 +21,16 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      # Step 1: Checkout the mod repo
+      # Step 1: Checkout the mod repo with full history
       - name: Checkout Mod Repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      # Step 2: Checkout the shared config inside the workspace
-      - name: Checkout Shared Config
-        uses: actions/checkout@v4
-        with:
-          repository: 'drkhodakarami/Minecraft-Shared-Config'
-          path: '.shared-config'
-
-      # Step 3: Move it to the parent directory where settings.gradle expects it
-      - name: Position Shared Config in Parent Directory
+      # Step 2: Clone the shared config directly into ../shared-config
+      - name: Clone Shared Config
         run: |
-          mv .shared-config-temp ../shared-config
-          # token: ${{ secrets.CONFIG_REPO_PAT }} # Uncomment if Minecraft-Shared-Config is a private repo
+          git clone https://github.com/drkhodakarami/Minecraft-Shared-Config.git ../shared-config
 
       - name: Set up JDK 25
         uses: actions/setup-java@v4
