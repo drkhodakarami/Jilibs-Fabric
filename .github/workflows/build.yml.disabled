@@ -1,0 +1,311 @@
+# Automatically build the project and run any configured tests for every push
+# and submitted pull request. This can help catch issues that only occur on
+# certain platforms or Java versions, and provides a first line of defence
+# against bad commits.
+
+name: build
+on: [pull_request, push]
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: checkout repository
+        uses: actions/checkout@v6
+      - name: Create dependencies.properties in parent directory
+        run: |
+          cat << 'EOF' > ../dependencies.properties
+          #=============================================================================================================================================
+          # Fabric Properties
+          #=============================================================================================================================================
+          # check these on https://fabricmc.net/develop
+          # ==================================================================================
+          java_version=25
+          minecraft_version=26.2
+
+          loader_version=0.19.3
+          fabric_version=0.157.0
+          loom_version=1.18-SNAPSHOT
+
+          spotless_version=8.9.0
+          cursegralde_version=1.4.0
+          minotaur_version=2.9.0
+          #=============================================================================================================================================
+          # Mod Properties
+          #=============================================================================================================================================
+          # ==================================================================================
+          # 00 - Jilibs
+          # check these on https://modrinth.com/mod/materia
+          # ==================================================================================
+          jilibs_version=26.2.1.1
+          jilibs_archives_base_name=Jilibs
+          jilibs_fabric_modid=jilibs-fabric
+          jilibs_neoforge_modid=jilibs-neoforge
+          jilibs_multi_modid=jilibs-multi
+          # Release Type can be: 'release', 'beta', 'alpha'
+          jilibs_release_type=release
+          #jilibs_project_id=
+          # ==================================================================================
+          # 01 - Materia
+          # check these on https://modrinth.com/mod/materia
+          # ==================================================================================
+          materia_version=1.0.0
+          materia_archives_base_name=Materia
+          materia_modid=materia
+          # Release Type can be: 'release', 'beta', 'alpha'
+          materia_release_type=release
+          materia_project_id=dQwx14Ox
+          # ==================================================================================
+          # 02 - Arma
+          # check these on https://modrinth.com/mod/arma
+          # ==================================================================================
+          arma_version=1.0.0
+          arma_archives_base_name=Arma
+          arma_modid=arma
+          # Release Type can be: 'release', 'beta', 'alpha'
+          arma_release_type=release
+          arma_project_id=RdTmI2BR
+          # ==================================================================================
+          # 03 - Lorica
+          # check these on https://modrinth.com/mod/lorica
+          # ==================================================================================
+          lorica_version=1.0.0
+          lorica_archives_base_name=Lorica
+          lorica_modid=lorica
+          # Release Type can be: 'release', 'beta', 'alpha'
+          lorica_release_type=release
+          lorica_project_id=ROGnHYXB
+          # ==================================================================================
+          # 04 - Cultus
+          # check these on https://modrinth.com/mod/cultus
+          # ==================================================================================
+          cultus_version=1.0.0
+          cultus_archives_base_name=Cultus
+          cultus_modid=cultus
+          # Release Type can be: 'release', 'beta', 'alpha'
+          cultus_release_type=release
+          cultus_project_id=mmwV5bhI
+          # ==================================================================================
+          # 05 - Praxis
+          # check these on https://modrinth.com/mod/praxis
+          # ==================================================================================
+          praxis_version=1.0.0
+          praxis_archives_base_name=Praxis
+          praxis_modid=praxis
+          # Release Type can be: 'release', 'beta', 'alpha'
+          praxis_release_type=release
+          praxis_project_id=gmCd6IYr
+          # ==================================================================================
+          # 06 - Mutare
+          # check these on https://modrinth.com/mod/mutare
+          # ==================================================================================
+          mutare_version=1.0.0
+          mutare_archives_base_name=Mutare
+          mutare_modid=mutare
+          # Release Type can be: 'release', 'beta', 'alpha'
+          mutare_release_type=release
+          mutare_project_id=QQ40xa5E
+          # ==================================================================================
+          # 07 - Nudare
+          # check these on https://modrinth.com/mod/nudare
+          # ==================================================================================
+          nudare_version=1.0.0
+          nudare_archives_base_name=Nudare
+          nudare_modid=nudare
+          # Release Type can be: 'release', 'beta', 'alpha'
+          nudare_release_type=release
+          nudare_project_id=OTqJlvoC
+          # ==================================================================================
+          # 08 - Tractus
+          # check these on https://modrinth.com/mod/tractus
+          # ==================================================================================
+          tractus_version=1.0.0
+          tractus_archives_base_name=Tractus
+          tractus_modid=tractus
+          # Release Type can be: 'release', 'beta', 'alpha'
+          tractus_release_type=release
+          tractus_project_id=xIqq7xh7
+          # ==================================================================================
+          # 09 - Virtus
+          # check these on https://modrinth.com/mod/virtus
+          # ==================================================================================
+          virtus_version=1.0.0
+          virtus_archives_base_name=Virtus
+          virtus_modid=virtus
+          # Release Type can be: 'release', 'beta', 'alpha'
+          virtus_release_type=release
+          virtus_project_id=4saJPnlw
+          # ==================================================================================
+          # 10 - Altum
+          # check these on https://modrinth.com/mod/altum
+          # ==================================================================================
+          altum_version=1.0.0
+          altum_archives_base_name=Altum
+          altum_modid=altum
+          # Release Type can be: 'release', 'beta', 'alpha'
+          altum_release_type=release
+          altum_project_id=w2IrjQgK
+          # ==================================================================================
+          # 11 - Potestas
+          # check these on https://modrinth.com/mod/potestas
+          # ==================================================================================
+          potestas_version=1.0.0
+          potestas_archives_base_name=Potestas
+          potestas_modid=potestas
+          # Release Type can be: 'release', 'beta', 'alpha'
+          potestas_release_type=release
+          potestas_project_id=ayIz2Xya
+          # ==================================================================================
+          # 12 - Machinum
+          # check these on https://modrinth.com/mod/machinum
+          # ==================================================================================
+          machinum_version=1.0.0
+          machinum_archives_base_name=Machinum
+          machinum_modid=machinum
+          # Release Type can be: 'release', 'beta', 'alpha'
+          machinum_release_type=release
+          machinum_project_id=SHdDSXkc
+          # ==================================================================================
+          # 13 - Vas
+          # check these on https://modrinth.com/mod/vas
+          # ==================================================================================
+          vas_version=1.0.0
+          vas_archives_base_name=Vas
+          vas_modid=vas
+          # Release Type can be: 'release', 'beta', 'alpha'
+          vas_release_type=release
+          vas_project_id=8uCuuY0x
+          # ==================================================================================
+          # 14 - Augmentum
+          # check these on https://modrinth.com/mod/augmentum
+          # ==================================================================================
+          augmentum_version=1.0.0
+          augmentum_archives_base_name=Augmentum
+          augmentum_modid=augmentum
+          # Release Type can be: 'release', 'beta', 'alpha'
+          augmentum_release_type=release
+          augmentum_project_id=XKNn9AWY
+          # ==================================================================================
+          # 15 - Regnum
+          # check these on https://modrinth.com/mod/regnum
+          # ==================================================================================
+          regnum_version=1.0.0
+          regnum_archives_base_name=Regnum
+          regnum_modid=regnum
+          # Release Type can be: 'release', 'beta', 'alpha'
+          regnum_release_type=release
+          regnum_project_id=hsDIzwjg
+          # ==================================================================================
+          # 16 - Cista
+          # check these on https://modrinth.com/mod/cista
+          # ==================================================================================
+          cista_version=1.0.0
+          cista_archives_base_name=Cista
+          cista_modid=cista
+          # Release Type can be: 'release', 'beta', 'alpha'
+          cista_release_type=release
+          cista_project_id=wGWsogak
+          # ==================================================================================
+          # 17 - Peram
+          # check these on https://modrinth.com/mod/peram
+          # ==================================================================================
+          peram_version=1.0.0
+          peram_archives_base_name=Peram
+          peram_modid=peram
+          # Release Type can be: 'release', 'beta', 'alpha'
+          peram_release_type=release
+          peram_project_id=hfJxIRx8
+          # ==================================================================================
+          # 18 - Fistula
+          # check these on https://modrinth.com/mod/fistula
+          # ==================================================================================
+          fistula_version=1.0.0
+          fistula_archives_base_name=Fistula
+          fistula_modid=fistula
+          # Release Type can be: 'release', 'beta', 'alpha'
+          fistula_release_type=release
+          fistula_project_id=vClfQzzW
+          # ==================================================================================
+          # 19 - Impulsus
+          # check these on https://modrinth.com/mod/impulsus
+          # ==================================================================================
+          impulsus_version=1.0.0
+          impulsus_archives_base_name=Impulsus
+          impulsus_modid=impulsus
+          # Release Type can be: 'release', 'beta', 'alpha'
+          impulsus_release_type=release
+          impulsus_project_id=PysEeoGl
+          # ==================================================================================
+          # 20 - Gradus
+          # check these on https://modrinth.com/mod/gradus
+          # ==================================================================================
+          gradus_version=1.0.0
+          gradus_archives_base_name=Gradus
+          gradus_modid=gradus
+          # Release Type can be: 'release', 'beta', 'alpha'
+          gradus_release_type=release
+          gradus_project_id=sv5GWclC
+
+          #=============================================================================================================================================
+          # Mod Dependencies
+          #=============================================================================================================================================
+          # https://maven.fabricmc.net/teamreborn/energy/
+          energy_version=5.0.0
+          #reborn_core_version=
+          #tech_reborn_version=
+          # ================================================================================== PAL (Player Ability Lib)
+          # https://github.com/Ladysnake/PlayerAbilityLib/releases
+          pal_version=1.16.0
+          # ================================================================================== EMI
+          # https://modrinth.com/mod/emi
+          #emi_version=1.1.22+1.21.1
+          # ================================================================================== REI
+          # https://maven.shedaniel.me/me/shedaniel/RoughlyEnoughItems-api-fabric/
+          # https://modrinth.com/mod/rei
+          rei_version=26.2.820
+          #"rei_client": [
+          #"dev.thementor.ultraio.compat.rei.ModREIPlugin"
+          #],
+          # ================================================================================== JEI
+          # https://github.com/mezz/JustEnoughItems
+          jeiMc_version=26.2
+          jei_version=30.39.0.232
+          # ================================================================================== Cloth Config
+          # https://maven.shedaniel.me/me/shedaniel/cloth/cloth-config-fabric/
+          # https://modrinth.com/mod/cloth-config
+          cloth_version=26.2.155
+          # ================================================================================== Architectury
+          # https://modrinth.com/mod/architectury-api
+          architectury_version=21.0.7
+          # ================================================================================== kyrptonaught
+          # https://github.com/kyrptonaught/customportalapi
+          #kyrptonaught_version=0.0.1-beta68-1.21.8
+          # ================================================================================== Jade
+          # https://www.curseforge.com/minecraft/mc-mods/jade/files/all?page=1&pageSize=20
+          jade_version=8529944
+          # ================================================================================== Mod Menu
+          # https://modrinth.com/mod/modmenu
+          modmenu_version=20.0.1
+          # ================================================================================== Mod Menu Badges
+          # https://modrinth.com/mod/modmenu-badges-lib
+          badges_lib_version=2026.3.1
+          # ================================================================================== Terra Blender
+          # https://modrinth.com/mod/terrablender
+          terrablender_version=26.2.0.0.2
+          EOF
+      - name: validate gradle wrapper
+        uses: gradle/actions/wrapper-validation@v6
+      - name: setup jdk
+        uses: actions/setup-java@v5
+        with:
+          java-version: '25'
+          distribution: 'microsoft'
+      - name: make gradle wrapper executable
+        run: chmod +x ./gradlew
+      - name: build
+        run: ./gradlew build
+      - name: capture build artifacts
+        uses: actions/upload-artifact@v7
+        with:
+          name: Artifacts
+          path: build/libs/
