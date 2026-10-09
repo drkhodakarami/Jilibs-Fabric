@@ -1,0 +1,18 @@
+def modVer = project.ext.modVersion
+
+def getCommitCount = { ->
+    try {
+        def stdout = new ByteArrayOutputStream()
+        exec {
+            commandLine 'git', 'rev-list', '--count', 'HEAD'
+            standardOutput = stdout
+        }
+        return stdout.toString().trim()
+    } catch (Exception ignored) {
+        return "0"
+    }
+}
+
+// Let's say that we set the mod version to 26.2.1
+// If HEAD has 42 commits, version becomes "26.2.1.42"
+version = "${modVer}.${getCommitCount()}"

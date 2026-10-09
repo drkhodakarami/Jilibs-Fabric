@@ -14,22 +14,23 @@ plugins {
     id 'org.jetbrains.dokka' version "${dokka_version}"
 }
 
-apply from: 'gradle/javaDocs.gradle'
-apply from: 'gradle/import-properties.gradle'
-apply from: 'gradle/log-changes.gradle'
+apply from: 'gradle/base/javaDocs.gradle'
+apply from: 'gradle/base/import-properties.gradle'
+apply from: 'gradle/base/log-changes.gradle'
 
 version = modVersion
 group = "com.dynamero.jilibs"
 
-apply from: 'gradle/loom-fab.gradle'
-apply from: 'gradle/repositories.gradle'
+apply from: 'gradle/base/git-versioning.gradle'
+apply from: 'gradle/base/loom-fab.gradle'
+apply from: 'gradle/base/repositories.gradle'
 apply from: 'gradle/dependencies.gradle'
-apply from: 'gradle/process-resources.gradle'
+apply from: 'gradle/base/process-resources.gradle'
 
-apply from: 'gradle/spotless.gradle'
-apply from: 'gradle/tasks-java-jar.gradle'
-apply from: 'gradle/tasks-custom.gradle'
-apply from: 'gradle/modrinth-publication.gradle'
-apply from: 'gradle/curseforge-publication.gradle'
-apply from: 'gradle/tasks-organize.gradle'
-apply from: 'gradle/maven-publication.gradle'
+apply from: 'gradle/base/spotless.gradle'
+apply from: 'gradle/base/tasks-java-jar.gradle'
+apply from: 'gradle/base/tasks-custom.gradle'
+apply from: 'gradle/publishing/modrinth-publication.gradle'
+apply from: 'gradle/publishing/curseforge-publication.gradle'
+apply from: 'gradle/base/tasks-organize.gradle'
+apply from: 'gradle/publishing/maven-publication.gradle'
