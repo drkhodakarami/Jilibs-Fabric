@@ -20,6 +20,7 @@
 <p align="center">
   <a href="#installation">Installation</a> •
   <a href="#usage">Usage</a> •
+  <a href="https://drkhodakarami.github.io/Jilibs-Fabric/">Java Docs</a> •
   <a href="#repository-info">Repository Info</a> •
   <a href="#license">License</a>
 </p>
@@ -88,12 +89,12 @@ If you want the Fabric Loader to recognize JiLibs as an embedded or required dep
 }
 ```
 ## Repository Info
-| Parameter | Value |
-|---|---|
+| Parameter | Value                                      |
+|---|--------------------------------------------|
 | Repository URL | https://repo.repsy.io/mvn/thementor/jilibs |
-| Group ID | com.dynamero (or your configured project group) |
-| Artifact ID | jilibs-fabric |
-| Distribution | Maven 2 / Repsy |
+| Group ID | com.dynamero.jilibs                        |
+| Artifact ID | jilibs-fabric                              |
+| Distribution | Maven 2 / Repsy                            |
 
 ## Author & Maintainer
 - TheMentor – Dynamero
