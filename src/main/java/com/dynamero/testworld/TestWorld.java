@@ -2,6 +2,7 @@ package com.dynamero.testworld;
 
 import com.dynamero.events.Events;
 import com.dynamero.logger.Logger;
+import com.dynamero.shared.annotations.*;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
@@ -11,6 +12,15 @@ import net.minecraft.world.level.gamerules.GameRules;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.storage.LevelData;
 
+@Developer("TurtyWurty")
+@CreatedAt("2026-10-10")
+@ModifiedAt("2026-10-10")
+@ModifiedBy("TheMentor")
+@Website("https://dynamero.com")
+@Repository("https://github.com/drkhodakarami/")
+@Discord("https://discord.gg/pmM4emCbuH")
+@Youtube("https://www.youtube.com/@TheMentorCodeLab")
+@Modrinth("https://modrinth.com/user/jiraiyah")
 @SuppressWarnings("resource")
 public final class TestWorld
 {

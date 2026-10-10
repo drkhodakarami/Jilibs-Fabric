@@ -1,0 +1,86 @@
+/*
+ * Copyright (c) 2025 Alireza Khodakarami
+ *
+ * Licensed under the MIT, (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     https://opensource.org/license/mit
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package com.dynamero.treefamily;
+
+import com.dynamero.registerars.ModItem;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.world.item.HangingSignItem;
+import net.minecraft.world.item.SignItem;
+import net.minecraft.world.level.block.*;
+
+import com.dynamero.registerars.ItemRegisterar;
+import com.dynamero.shared.annotations.*;
+import com.dynamero.shared.utils.BaseHelper;
+
+/**
+ * Container and registry holder for sign and hanging sign items within a {@link TreeFamilyBuilder}.
+ *
+ * @param sign Registered sign item instance.
+ * @param hangingSign Registered hanging sign item instance.
+ */
+@SuppressWarnings("unused")
+@Developer("TurtyWurty")
+@CreatedAt("2026-10-08")
+@ModifiedAt("2026-10-08")
+@ModifiedBy("TheMentor")
+@Website("https://dynamero.com")
+@Repository("https://github.com/drkhodakarami/")
+@Discord("https://discord.gg/pmM4emCbuH")
+@Youtube("https://www.youtube.com/@TheMentorCodeLab")
+@Modrinth("https://modrinth.com/user/jiraiyah")
+public record WoodsetSignItems (ModItem<SignItem> sign, ModItem<HangingSignItem> hangingSign)
+{
+
+    /**
+     * Constructs and registers sign and hanging sign items for a wood set.
+     *
+     * @param modid           the mod identifier
+     * @param name            the base wood name
+     * @param itemRegister    the item registerer helper
+     * @param sign            the standing sign block
+     * @param wallSign        the wall sign block
+     * @param hangingSign     the ceiling hanging sign block
+     * @param wallHangingSign the wall hanging sign block
+     */
+    public static <S extends SignBlock, W extends WallSignBlock,
+            C extends CeilingHangingSignBlock, H extends WallHangingSignBlock,
+            SI extends SignItem, HI extends HangingSignItem>
+        WoodsetSignItems build(String modid, String name,
+                            ItemRegisterar itemRegister,
+                            S sign,
+                            W wallSign,
+                            C hangingSign,
+                            H wallHangingSign)
+    {
+        var signItemId = BaseHelper.ResourceKeys.create(modid, name + "_sign", Registries.ITEM);
+        var hangingSignItemId = BaseHelper.ResourceKeys.create(modid, name + "_hanging_sign", Registries.ITEM);
+
+        var signItem = new ModItem<>(itemRegister
+                .register(name + "_sign",
+                          settings ->
+                                  new SignItem(sign, wallSign, settings.stacksTo(16))).item(),
+                                      signItemId);
+
+        var hangingSignItem = new ModItem<>(itemRegister
+                .register(name + "_hanging_sign",
+                          settings ->
+                                  new HangingSignItem(hangingSign, wallHangingSign, settings.stacksTo(16))).item(),
+                                             hangingSignItemId);
+
+        return new WoodsetSignItems(signItem, hangingSignItem);
+    }
+}

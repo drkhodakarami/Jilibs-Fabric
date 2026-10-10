@@ -1,5 +1,6 @@
 package com.dynamero.testworld.client;
 
+import com.dynamero.shared.annotations.*;
 import com.dynamero.testworld.TestWorld;
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.Minecraft;
@@ -29,6 +30,15 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
+@Developer("TurtyWurty")
+@CreatedAt("2026-10-10")
+@ModifiedAt("2026-10-10")
+@ModifiedBy("TheMentor")
+@Website("https://dynamero.com")
+@Repository("https://github.com/drkhodakarami/")
+@Discord("https://discord.gg/pmM4emCbuH")
+@Youtube("https://www.youtube.com/@TheMentorCodeLab")
+@Modrinth("https://modrinth.com/user/jiraiyah")
 public final class TestWorldLauncher
 {
     private static final Logger LOGGER = LogUtils.getLogger();

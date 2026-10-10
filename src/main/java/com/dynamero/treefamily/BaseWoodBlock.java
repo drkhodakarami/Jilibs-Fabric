@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.dynamero.woodset;
+package com.dynamero.treefamily;
 
 import org.jetbrains.annotations.NotNull;
 

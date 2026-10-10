@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.dynamero.woodset;
+package com.dynamero.treefamily;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +25,7 @@ import com.dynamero.shared.annotations.*;
 import com.dynamero.shared.exceptions.Exceptions;
 
 /**
- * Registry class for managing all registered {@link WoodSet} instances.
+ * Registry class for managing all registered {@link TreeFamilyBuilder} instances.
  */
 @SuppressWarnings("unused")
 @Developer("TheMentor")
@@ -37,19 +37,19 @@ import com.dynamero.shared.exceptions.Exceptions;
 @Discord("https://discord.gg/pmM4emCbuH")
 @Youtube("https://www.youtube.com/@TheMentorCodeLab")
 @Modrinth("https://modrinth.com/user/jiraiyah")
-public class WoodSets
+public class TreeFamilySets
 {
     /**
      * Internal list of all registered WoodSets.
      */
-    private static final List<WoodSet> WOOD_SETS = new ArrayList<>();
+    private static final List<TreeFamily> WOOD_SETS = new ArrayList<>();
 
     /**
      * Private constructor to prevent instantiation.
      *
      * @throws AssertionError if called directly
      */
-    public WoodSets()
+    public TreeFamilySets()
     {
         Exceptions.throwCtorAssertion();
     }
@@ -59,7 +59,7 @@ public class WoodSets
      *
      * @return The list of WoodSets.
      */
-    public static List<WoodSet> get()
+    public static List<TreeFamily> get()
     {
         return WOOD_SETS;
     }
@@ -70,10 +70,10 @@ public class WoodSets
      * @param name The name of the WoodSet (case-insensitive).
      * @return The matching WoodSet, or null if not found.
      */
-    public static WoodSet get(@NotNull String name)
+    public static TreeFamily get(@NotNull String name)
     {
         return WOOD_SETS.stream()
-                .filter(set -> name.equalsIgnoreCase(set.getName()))
+                .filter(set -> name.equalsIgnoreCase(set.name()))
                 .findFirst()
                 .orElse(null);
     }

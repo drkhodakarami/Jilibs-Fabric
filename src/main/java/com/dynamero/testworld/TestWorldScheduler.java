@@ -1,5 +1,6 @@
 package com.dynamero.testworld;
 
+import com.dynamero.shared.annotations.*;
 import net.minecraft.server.level.ServerLevel;
 
 import java.util.IdentityHashMap;
@@ -7,6 +8,15 @@ import java.util.Map;
 import java.util.PriorityQueue;
 import java.util.function.Consumer;
 
+@Developer("TurtyWurty")
+@CreatedAt("2026-10-10")
+@ModifiedAt("2026-10-10")
+@ModifiedBy("TheMentor")
+@Website("https://dynamero.com")
+@Repository("https://github.com/drkhodakarami/")
+@Discord("https://discord.gg/pmM4emCbuH")
+@Youtube("https://www.youtube.com/@TheMentorCodeLab")
+@Modrinth("https://modrinth.com/user/jiraiyah")
 public final class TestWorldScheduler {
     private static final Map<ServerLevel, PriorityQueue<ScheduledAction>> ACTIONS = new IdentityHashMap<>();
 

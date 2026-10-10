@@ -18,6 +18,8 @@ package com.dynamero.registerars;
 
 import java.util.function.Function;
 
+import com.dynamero.registerars.interfaces.IBlockItemRegisterar;
+import com.dynamero.registerars.interfaces.IBlockRegisterar;
 import com.dynamero.shared.annotations.*;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.references.BlockItemId;
@@ -286,5 +288,11 @@ public record ModBlock<R extends Block, I extends BlockItem>(R block, I blockIte
 
             return new ModBlock<>(block, blockItem, blockItemId);
         }
+    }
+
+    public static <R extends Block, C extends Block> ModBlock<R, BlockItem> register(IBlockRegisterar blockRegisterar, IBlockItemRegisterar itemRegisterar, C copyBlock, BlockItemId id, Function<BlockBehaviour.Properties, ? extends R> factory)
+    {
+        var plankBlock = blockRegisterar.registerCopy(id, copyBlock, factory);
+        return new ModBlock<>(plankBlock, itemRegisterar.register(plankBlock, id), id);
     }
 }
