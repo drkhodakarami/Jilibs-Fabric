@@ -22,8 +22,8 @@ import com.dynamero.shared.annotations.*;
  * Provides a contract for handling configuration data.
  */
 @Developer("Magistermaks")
-@CreatedAt("2026-08-10")
-@ModifiedAt("2026-08-10")
+@CreatedAt("2026-10-08")
+@ModifiedAt("2026-10-08")
 @ModifiedBy("TheMentor")
 @Website("https://dynamero.com")
 @Repository("https://github.com/magistermaks/fabric-simplelibs/blob/master/simple-config/SimpleConfig.java")

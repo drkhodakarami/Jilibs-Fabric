@@ -16,7 +16,10 @@
 
 package com.dynamero;
 
+import com.dynamero.events.Events;
 import com.dynamero.shared.annotations.*;
+import com.dynamero.testworld.TestWorldGemerator;
+import com.dynamero.testworld.TestWorldRegister;
 import com.mojang.serialization.Codec;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.event.registry.FabricRegistryBuilder;
@@ -49,8 +52,8 @@ import com.dynamero.shared.records.lists.*;
 import com.dynamero.shared.utils.BaseHelper;
 
 @Developer("TheMentor")
-@CreatedAt("2026-08-10")
-@ModifiedAt("2026-08-10")
+@CreatedAt("2026-10-08")
+@ModifiedAt("2026-10-08")
 @ModifiedBy("TheMentor")
 @Website("https://dynamero.com")
 @Repository("https://github.com/drkhodakarami/")
@@ -512,5 +515,12 @@ public class Jilibs implements ModInitializer
         });
 
         Components.init();
+
+        TestWorldRegister.init(TestWorldRegister.EMPTY);
+    }
+
+    public static void setTestWorldGenerator(TestWorldGemerator generator)
+    {
+        TestWorldRegister.init(generator);
     }
 }

@@ -13,9 +13,9 @@
 		"issues": "https://github.com/drkhodakarami/JiLibs-fabric"
 	},
 	"license": "LGPL-3.0",
-	"icon": "assets/jilibs_fabric/icon.png",
+	"icon": "assets/jilibs-fabric/icon.png",
 	"environment": "*",
-	"accessWidener": "jilibs_fabric.classtweaker",
+	"accessWidener": "jilibs-fabric.classtweaker",
 	"entrypoints": {
 		"main": [
 			"com.dynamero.Jilibs"
@@ -25,7 +25,7 @@
 		]
 	},
 	"mixins": [
-		"jilibs_fabric.mixins.json"
+		"jilibs-fabric.mixins.json"
 	],
 	"depends": {
 		"fabricloader": ">=${loader_ver}",

@@ -17,11 +17,17 @@
 package com.dynamero;
 
 import com.dynamero.shared.annotations.*;
+import com.dynamero.testworld.TestWorldRegister;
+import com.dynamero.testworld.client.ModTestWorldButton;
+import com.dynamero.testworld.client.TestWorldLauncher;
 import net.fabricmc.api.ClientModInitializer;
+import net.minecraft.world.level.levelgen.flat.FlatLayerInfo;
+
+import java.util.List;
 
 @Developer("TheMentor")
-@CreatedAt("2026-08-10")
-@ModifiedAt("2026-08-10")
+@CreatedAt("2026-10-08")
+@ModifiedAt("2026-10-08")
 @ModifiedBy("TheMentor")
 @Website("https://dynamero.com")
 @Repository("https://github.com/drkhodakarami/")
@@ -32,5 +38,23 @@ public class JilibsClient implements ClientModInitializer
 {
     @Override
     public void onInitializeClient()
-    {}
+    {
+        TestWorldLauncher.setDefaultLayers();
+        ModTestWorldButton.init();
+    }
+
+    public static void setTestWorldFlatAll()
+    {
+        TestWorldLauncher.enableFlatAllDimensions();
+    }
+
+    public static void setTestWorldLayers(List<FlatLayerInfo> list)
+    {
+        TestWorldLauncher.setLayers(list);
+    }
+
+    public static void setTestWorldLayers(FlatLayerInfo... list)
+    {
+        TestWorldLauncher.setLayers(list);
+    }
 }
